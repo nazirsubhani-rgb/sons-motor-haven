@@ -1,0 +1,248 @@
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { Shield, CheckCircle, Users, ThumbsUp, Star, ArrowRight, Phone } from "lucide-react";
+import heroImage from "@/assets/hero-car.jpg";
+
+const Home = () => {
+  const features = [
+    {
+      icon: CheckCircle,
+      title: "Quality Checked Vehicles",
+      description: "Every vehicle undergoes rigorous inspection to ensure reliability and peace of mind.",
+    },
+    {
+      icon: Star,
+      title: "Competitive Pricing",
+      description: "Fair, transparent pricing with no hidden fees. We offer genuine value for money.",
+    },
+    {
+      icon: Shield,
+      title: "Warranty Peace of Mind",
+      description: "Comprehensive warranty coverage in partnership with Autoguard for added security.",
+    },
+    {
+      icon: Users,
+      title: "Friendly Customer Service",
+      description: "Family-run business with a personal touch. No pressure, just honest advice.",
+    },
+  ];
+
+  const trustPoints = [
+    "Transparent, no-pressure sales approach",
+    "Comprehensive vehicle history checks",
+    "Flexible viewing appointments",
+    "Part exchange welcome",
+    "Finance options available",
+    "Nationwide delivery available",
+  ];
+
+  return (
+    <main>
+      {/* Hero Section */}
+      <section className="relative min-h-[90vh] flex items-center bg-gradient-hero overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <img
+            src={heroImage}
+            alt="Premium used car"
+            className="w-full h-full object-cover opacity-40"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-secondary via-secondary/80 to-transparent" />
+        </div>
+
+        {/* Content */}
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-2xl space-y-8 animate-fade-in-up">
+            <div className="space-y-2">
+              <span className="inline-block text-gold text-sm font-medium tracking-widest uppercase opacity-0 animate-fade-in stagger-1">
+                Welcome to WM & Sons Motors Ltd
+              </span>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-secondary-foreground leading-tight opacity-0 animate-fade-in stagger-2">
+                Quality Used Cars{" "}
+                <span className="text-gold">You Can Trust</span>
+              </h1>
+            </div>
+            <p className="text-lg md:text-xl text-muted-foreground max-w-xl opacity-0 animate-fade-in stagger-3">
+              Peace of mind motoring with warranty included. Family-run dealership offering carefully selected vehicles at competitive prices.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 opacity-0 animate-fade-in stagger-4">
+              <Button variant="hero" size="xl" asChild>
+                <Link to="/stock">
+                  View Stock
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Link>
+              </Button>
+              <Button variant="hero-outline" size="xl" asChild>
+                <Link to="/contact">Contact Us</Link>
+              </Button>
+            </div>
+            <div className="flex items-center gap-4 pt-4 opacity-0 animate-fade-in stagger-5">
+              <a
+                href="tel:07960130449"
+                className="flex items-center gap-2 text-gold hover:text-gold-light transition-colors"
+              >
+                <Phone className="w-5 h-5" />
+                <span className="font-semibold">07960 130449</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us Section */}
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="text-gold text-sm font-medium tracking-widest uppercase">
+              Why Choose Us
+            </span>
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mt-3">
+              The WM & Sons Difference
+            </h2>
+            <p className="text-muted-foreground mt-4">
+              We're not just selling cars – we're building relationships based on trust, quality, and exceptional service.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {features.map((feature, index) => (
+              <div
+                key={feature.title}
+                className="group p-8 bg-card rounded-xl shadow-card hover:shadow-elevated transition-all duration-300 hover:-translate-y-1"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <div className="w-14 h-14 rounded-xl bg-gold/10 flex items-center justify-center mb-6 group-hover:bg-gold/20 transition-colors">
+                  <feature.icon className="w-7 h-7 text-gold" />
+                </div>
+                <h3 className="text-lg font-display font-semibold text-foreground mb-3">
+                  {feature.title}
+                </h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  {feature.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Warranty Section */}
+      <section className="py-20 bg-secondary">
+        <div className="container mx-auto px-4">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-6">
+              <span className="text-gold text-sm font-medium tracking-widest uppercase">
+                Warranty Protection
+              </span>
+              <h2 className="text-3xl md:text-4xl font-display font-bold text-secondary-foreground">
+                Warranty Peace of Mind in Partnership with{" "}
+                <span className="text-gold">Autoguard</span>
+              </h2>
+              <p className="text-muted-foreground leading-relaxed">
+                Every vehicle we sell comes with the option of comprehensive warranty coverage through our trusted partner, Autoguard. Drive away with confidence knowing you're protected against unexpected mechanical and electrical failures.
+              </p>
+              <ul className="space-y-3">
+                {[
+                  "Mechanical & electrical cover included",
+                  "Nationwide repair network",
+                  "Optional extended warranty available",
+                  "24/7 breakdown assistance",
+                ].map((item) => (
+                  <li key={item} className="flex items-center gap-3 text-secondary-foreground">
+                    <CheckCircle className="w-5 h-5 text-gold flex-shrink-0" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <Button variant="gold" size="lg" asChild>
+                <Link to="/warranty">
+                  Learn More About Warranty
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Link>
+              </Button>
+            </div>
+            <div className="relative">
+              <div className="bg-charcoal-light rounded-2xl p-8 md:p-12">
+                <Shield className="w-20 h-20 text-gold mb-6" />
+                <h3 className="text-2xl font-display font-bold text-secondary-foreground mb-4">
+                  Protected Motoring
+                </h3>
+                <p className="text-muted-foreground">
+                  Our warranty packages are designed to give you complete peace of mind. Whether you're commuting daily or exploring the country, you're covered.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Trust Section */}
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="order-2 lg:order-1">
+              <div className="bg-cream-dark rounded-2xl p-8 md:p-12 shadow-card">
+                <div className="grid grid-cols-2 gap-6">
+                  {trustPoints.map((point, index) => (
+                    <div key={point} className="flex items-start gap-3">
+                      <ThumbsUp className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
+                      <span className="text-foreground text-sm">{point}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <div className="order-1 lg:order-2 space-y-6">
+              <span className="text-gold text-sm font-medium tracking-widest uppercase">
+                Customer Reassurance
+              </span>
+              <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground">
+                Trust, Transparency & No Pressure Sales
+              </h2>
+              <p className="text-muted-foreground leading-relaxed">
+                At WM & Sons Motors Ltd, we believe in doing business the right way. We're a family-run dealership that values honesty and transparency above all else. When you visit us, you'll experience a refreshingly different approach to car buying.
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                No pushy sales tactics, no hidden fees, just straightforward advice and a genuine commitment to finding you the right vehicle at the right price.
+              </p>
+              <Button variant="gold-outline" size="lg" asChild>
+                <Link to="/about">
+                  About Our Family Business
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-gradient-hero">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl md:text-4xl font-display font-bold text-secondary-foreground mb-6">
+            Ready to Find Your Perfect Car?
+          </h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
+            Browse our carefully selected stock or get in touch to discuss your requirements. We're here to help you find quality used cars you can trust.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button variant="hero" size="xl" asChild>
+              <Link to="/stock">
+                View Our Stock
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Link>
+            </Button>
+            <Button variant="hero-outline" size="xl" asChild>
+              <a href="tel:07960130449">
+                <Phone className="w-5 h-5 mr-2" />
+                Call Now
+              </a>
+            </Button>
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+};
+
+export default Home;
