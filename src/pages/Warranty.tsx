@@ -1,6 +1,12 @@
-import { Shield, CheckCircle, Wrench, Phone, Clock, MapPin } from "lucide-react";
+import { Shield, CheckCircle, Wrench, Phone, Clock, MapPin, HelpCircle, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const Warranty = () => {
   const benefits = [
@@ -39,6 +45,41 @@ const Warranty = () => {
     "Clutch assembly",
   ];
 
+  const faqs = [
+    {
+      question: "What does the warranty cover?",
+      answer: "Our warranty covers a wide range of mechanical and electrical components including the engine, gearbox, transmission, steering, brakes, cooling system, and more. Specific coverage details are provided with each warranty policy and can vary depending on the level of cover selected.",
+    },
+    {
+      question: "How long does the warranty last?",
+      answer: "Standard warranty periods typically range from 3 to 12 months, depending on the vehicle and package selected. Extended warranty options are available for those seeking longer-term protection and peace of mind.",
+    },
+    {
+      question: "Is there a mileage limit on the warranty?",
+      answer: "Most warranty packages include a mileage allowance that varies based on the level of cover. Details of any mileage restrictions will be clearly outlined in your warranty documentation.",
+    },
+    {
+      question: "How do I make a claim?",
+      answer: "Making a claim is straightforward. Simply contact the Autoguard claims line, provide your warranty details and describe the issue. You'll be guided to an approved repairer who will assess and carry out any necessary repairs covered under your warranty.",
+    },
+    {
+      question: "Can I use any garage for repairs?",
+      answer: "To ensure repairs meet the required standards, warranty work should be carried out by approved repairers within the Autoguard network. This network covers the UK, so you'll always have convenient access to qualified technicians.",
+    },
+    {
+      question: "Are there any exclusions?",
+      answer: "Like all warranties, there are some exclusions such as wear and tear items, routine servicing, and pre-existing faults. All exclusions are clearly detailed in the warranty terms and conditions provided at the time of purchase.",
+    },
+    {
+      question: "Can I extend my warranty?",
+      answer: "Yes, extended warranty options are available. We recommend discussing your requirements with us before your initial warranty expires to ensure continuous coverage and protection.",
+    },
+    {
+      question: "Is the warranty transferable if I sell the car?",
+      answer: "In most cases, warranties can be transferred to a new owner, which can add value when selling your vehicle. Please check your specific warranty terms or contact us for confirmation.",
+    },
+  ];
+
   return (
     <main className="min-h-screen">
       {/* Hero Section */}
@@ -46,13 +87,13 @@ const Warranty = () => {
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto">
             <span className="text-gold text-sm font-medium tracking-widest uppercase">
-              Warranty Protection
+              Autoguard Warranty
             </span>
             <h1 className="text-4xl md:text-5xl font-display font-bold text-secondary-foreground mt-3 mb-6">
               Peace of Mind Motoring
             </h1>
             <p className="text-muted-foreground text-lg">
-              Comprehensive warranty coverage in partnership with Autoguard. Drive away with confidence.
+              Comprehensive warranty coverage in partnership with Autoguard. Drive away with confidence knowing you're protected.
             </p>
           </div>
         </div>
@@ -64,15 +105,18 @@ const Warranty = () => {
           <div className="max-w-4xl mx-auto">
             <div className="bg-cream-dark rounded-2xl p-8 md:p-12 shadow-card">
               <div className="flex flex-col md:flex-row items-center gap-8">
-                <div className="w-32 h-32 bg-gold/10 rounded-2xl flex items-center justify-center flex-shrink-0">
-                  <Shield className="w-16 h-16 text-gold" />
+                <div className="w-40 h-40 bg-gold/10 rounded-2xl flex items-center justify-center flex-shrink-0">
+                  <Shield className="w-20 h-20 text-gold" />
                 </div>
                 <div className="text-center md:text-left">
                   <h2 className="text-2xl md:text-3xl font-display font-bold text-foreground mb-4">
                     In Partnership with <span className="text-gold">Autoguard</span>
                   </h2>
-                  <p className="text-muted-foreground leading-relaxed">
+                  <p className="text-muted-foreground leading-relaxed mb-4">
                     Autoguard is one of the UK's leading warranty providers, offering comprehensive mechanical and electrical protection for used vehicles. Every warranty we provide is backed by their expertise and nationwide support network.
+                  </p>
+                  <p className="text-sm text-gold font-medium">
+                    Warranty peace of mind in partnership with Autoguard.
                   </p>
                 </div>
               </div>
@@ -86,11 +130,14 @@ const Warranty = () => {
         <div className="container mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <span className="text-gold text-sm font-medium tracking-widest uppercase">
-              Warranty Benefits
+              Key Benefits
             </span>
             <h2 className="text-3xl font-display font-bold text-foreground mt-3">
-              What's Included
+              Why Choose Our Warranty
             </h2>
+            <p className="text-muted-foreground mt-4">
+              Enjoy comprehensive protection and support designed to keep you on the road with confidence.
+            </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
@@ -120,10 +167,10 @@ const Warranty = () => {
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-display font-bold text-secondary-foreground">
-                Components Covered
+                What's Covered
               </h2>
               <p className="text-muted-foreground mt-4">
-                Our warranty packages cover a wide range of mechanical and electrical components.
+                Our warranty packages cover a wide range of mechanical and electrical components, giving you protection where it matters most.
               </p>
             </div>
 
@@ -147,8 +194,11 @@ const Warranty = () => {
         <div className="container mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <h2 className="text-3xl font-display font-bold text-foreground">
-              How It Works
+              How Claims Work
             </h2>
+            <p className="text-muted-foreground mt-4">
+              Getting repairs covered under your warranty is simple and straightforward.
+            </p>
           </div>
 
           <div className="max-w-4xl mx-auto">
@@ -156,18 +206,18 @@ const Warranty = () => {
               {[
                 {
                   step: "01",
-                  title: "Purchase Your Vehicle",
-                  description: "Choose from our quality-checked stock with warranty included.",
+                  title: "Report the Issue",
+                  description: "Contact the Autoguard claims line and describe the problem you're experiencing with your vehicle.",
                 },
                 {
                   step: "02",
-                  title: "Something Goes Wrong",
-                  description: "Contact Autoguard's dedicated claims line 24/7.",
+                  title: "Get Authorisation",
+                  description: "A claims handler will assess your case and direct you to an approved repairer in the nationwide network.",
                 },
                 {
                   step: "03",
-                  title: "Get It Fixed",
-                  description: "Approved repairs at a nationwide network of repairers.",
+                  title: "Repair Complete",
+                  description: "The approved repairer carries out the work, and covered costs are handled directly with Autoguard.",
                 },
               ].map((item) => (
                 <div key={item.step} className="text-center">
@@ -183,6 +233,61 @@ const Warranty = () => {
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-20 bg-cream-dark">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto">
+            <div className="text-center mb-12">
+              <HelpCircle className="w-12 h-12 text-gold mx-auto mb-4" />
+              <h2 className="text-3xl font-display font-bold text-foreground">
+                Frequently Asked Questions
+              </h2>
+              <p className="text-muted-foreground mt-4">
+                Got questions? Find answers to the most common warranty queries below.
+              </p>
+            </div>
+
+            <Accordion type="single" collapsible className="space-y-4">
+              {faqs.map((faq, index) => (
+                <AccordionItem
+                  key={index}
+                  value={`item-${index}`}
+                  className="bg-card rounded-xl px-6 border-none shadow-card"
+                >
+                  <AccordionTrigger className="text-left font-semibold text-foreground hover:text-gold hover:no-underline py-6">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground pb-6">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+        </div>
+      </section>
+
+      {/* Extended Warranty */}
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <Wrench className="w-12 h-12 text-gold mx-auto mb-4" />
+            <h2 className="text-3xl font-display font-bold text-foreground mb-4">
+              Extended Warranty Options
+            </h2>
+            <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
+              Looking for longer-term protection? Ask us about extended warranty packages that can provide coverage for 12 months or more. Keep your vehicle protected for longer and enjoy uninterrupted peace of mind.
+            </p>
+            <Button variant="gold" size="lg" asChild>
+              <Link to="/contact">
+                Enquire About Extended Warranty
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </Link>
+            </Button>
           </div>
         </div>
       </section>
@@ -204,7 +309,7 @@ const Warranty = () => {
               </a>
             </Button>
             <Button variant="hero-outline" size="xl" asChild>
-              <Link to="/contact">Send Enquiry</Link>
+              <Link to="/contact">Ask About Warranty</Link>
             </Button>
           </div>
         </div>
