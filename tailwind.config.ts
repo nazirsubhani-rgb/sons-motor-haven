@@ -77,8 +77,8 @@ export default {
         },
       },
       fontFamily: {
-        display: ['Cinzel', 'Times New Roman', 'serif'],
-        body: ['Raleway', 'Helvetica Neue', 'sans-serif'],
+        display: ['Bodoni Moda', 'Didot', 'Bodoni MT', 'Times New Roman', 'serif'],
+        body: ['Manrope', 'system-ui', '-apple-system', 'Segoe UI', 'sans-serif'],
       },
       borderRadius: {
         lg: "var(--radius)",
