@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
+import { openWhatsAppChat } from "@/lib/whatsapp";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -21,7 +22,7 @@ const Contact = () => {
 
   const handleWhatsAppClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`, '_blank', 'noopener,noreferrer');
+    openWhatsAppChat(phoneNumber, whatsappMessage);
   };
 
   const handleChange = (

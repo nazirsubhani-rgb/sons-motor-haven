@@ -1,6 +1,7 @@
 import { Shield, CheckCircle, Wrench, Phone, Clock, MapPin, HelpCircle, ArrowRight, Car, Settings, Zap, Cog, MessageCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { openWhatsAppChat } from "@/lib/whatsapp";
 import {
   Accordion,
   AccordionContent,
@@ -14,7 +15,7 @@ const Warranty = () => {
 
   const handleWhatsAppClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`, '_blank', 'noopener,noreferrer');
+    openWhatsAppChat(phoneNumber, whatsappMessage);
   };
 
   const benefits = [

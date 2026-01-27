@@ -1,15 +1,13 @@
 import { MessageCircle } from "lucide-react";
+import { openWhatsAppChat } from "@/lib/whatsapp";
 
 const WhatsAppButton = () => {
   const phoneNumber = "447960130449";
   const message = "Hello! I'm interested in learning more about your vehicles.";
-  // Use direct wa.me link without API
-  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    // Open WhatsApp in a new window
-    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+    openWhatsAppChat(phoneNumber, message);
   };
 
   return (

@@ -2,6 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Phone, Mail, MapPin, Facebook, Instagram, Twitter, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/wm-sons-logo.jpg";
+import { openWhatsAppChat } from "@/lib/whatsapp";
 
 const Footer = () => {
   const location = useLocation();
@@ -10,7 +11,7 @@ const Footer = () => {
   
   const handleWhatsAppClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`, '_blank', 'noopener,noreferrer');
+    openWhatsAppChat(phoneNumber, whatsappMessage);
   };
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
