@@ -77,8 +77,8 @@ export default {
         },
       },
       fontFamily: {
-        display: ['Cormorant Garamond', 'Georgia', 'serif'],
-        body: ['Montserrat', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+        display: ['Cinzel', 'Times New Roman', 'serif'],
+        body: ['Raleway', 'Helvetica Neue', 'sans-serif'],
       },
       borderRadius: {
         lg: "var(--radius)",
