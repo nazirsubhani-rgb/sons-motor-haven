@@ -2,6 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import logo from "@/assets/wm-sons-logo.jpg";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -22,15 +23,12 @@ const Header = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3">
-            <div className="flex flex-col">
-              <span className="text-gold font-display text-xl font-bold tracking-wide">
-                WM & Sons
-              </span>
-              <span className="text-gold/80 text-xs tracking-widest uppercase">
-                Motors Ltd
-              </span>
-            </div>
+          <Link to="/" className="flex items-center">
+            <img 
+              src={logo} 
+              alt="WM & Sons Motors Ltd" 
+              className="h-16 w-auto"
+            />
           </Link>
 
           {/* Desktop Navigation */}

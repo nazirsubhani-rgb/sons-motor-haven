@@ -70,6 +70,11 @@ export default {
           DEFAULT: "hsl(var(--cream))",
           dark: "hsl(var(--cream-dark))",
         },
+        autoguard: {
+          red: "hsl(var(--autoguard-red))",
+          "red-dark": "hsl(var(--autoguard-red-dark))",
+          black: "hsl(var(--autoguard-black))",
+        },
       },
       fontFamily: {
         display: ['Playfair Display', 'serif'],

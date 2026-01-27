@@ -45,10 +45,16 @@
     --cream: 40 20% 98%;
     --cream-dark: 40 15% 94%;
 
+    /* Autoguard Colors */
+    --autoguard-red: 0 72% 51%;
+    --autoguard-red-dark: 0 72% 41%;
+    --autoguard-black: 0 0% 8%;
+
     /* Gradients */
     --gradient-gold: linear-gradient(135deg, hsl(43, 74%, 52%) 0%, hsl(43, 74%, 42%) 100%);
     --gradient-dark: linear-gradient(180deg, hsl(0, 0%, 8%) 0%, hsl(0, 0%, 12%) 100%);
     --gradient-hero: linear-gradient(135deg, hsl(0, 0%, 5%) 0%, hsl(0, 0%, 15%) 50%, hsl(0, 0%, 8%) 100%);
+    --gradient-autoguard: linear-gradient(135deg, hsl(0, 72%, 51%) 0%, hsl(0, 72%, 41%) 100%);
 
     /* Shadows */
     --shadow-gold: 0 4px 20px -4px hsl(43 74% 52% / 0.3);
