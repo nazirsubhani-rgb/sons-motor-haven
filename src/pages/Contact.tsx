@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Send, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -15,6 +15,10 @@ const Contact = () => {
     phone: "",
     message: "",
   });
+
+  const phoneNumber = "447960130449";
+  const whatsappMessage = "Hello! I'm interested in learning more about your vehicles.";
+  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`;
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -71,8 +75,8 @@ const Contact = () => {
     {
       icon: MapPin,
       label: "Location",
-      value: "United Kingdom",
-      href: null,
+      value: "121 Augustine Road, Harrow, HA3 5NT",
+      href: "https://maps.google.com/?q=121+Augustine+Road,+Harrow,+HA3+5NT",
     },
     {
       icon: Clock,
@@ -134,6 +138,8 @@ const Contact = () => {
                           {item.href ? (
                             <a
                               href={item.href}
+                              target={item.label === "Location" ? "_blank" : undefined}
+                              rel={item.label === "Location" ? "noopener noreferrer" : undefined}
                               className="text-foreground font-semibold hover:text-gold transition-colors"
                             >
                               {item.value}
@@ -149,16 +155,48 @@ const Contact = () => {
                   ))}
                 </div>
 
-                {/* Map Placeholder */}
-                <div className="bg-cream-dark rounded-xl overflow-hidden h-64">
-                  <div className="w-full h-full flex items-center justify-center bg-muted">
-                    <div className="text-center">
-                      <MapPin className="w-12 h-12 text-gold mx-auto mb-3" />
-                      <p className="text-muted-foreground">
-                        Google Maps location coming soon
+                {/* WhatsApp CTA */}
+                <div className="bg-[#25D366]/10 p-6 rounded-xl border border-[#25D366]/30">
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="w-12 h-12 bg-[#25D366] rounded-lg flex items-center justify-center">
+                      <MessageCircle className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold text-foreground">
+                        Chat on WhatsApp
+                      </h3>
+                      <p className="text-sm text-muted-foreground">
+                        Get instant responses
                       </p>
                     </div>
                   </div>
+                  <Button 
+                    className="w-full bg-[#25D366] hover:bg-[#20bd5a] text-white"
+                    asChild
+                  >
+                    <a
+                      href={whatsappUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <MessageCircle className="w-4 h-4 mr-2" />
+                      Chat with us on WhatsApp
+                    </a>
+                  </Button>
+                </div>
+
+                {/* Map */}
+                <div className="bg-cream-dark rounded-xl overflow-hidden h-64">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2479.123456789!2d-0.3345!3d51.5890!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487611e5c123456%3A0x0!2s121%20Augustine%20Rd%2C%20Harrow%20HA3%205NT!5e0!3m2!1sen!2suk!4v1234567890"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="WM & Sons Motors Ltd Location"
+                  />
                 </div>
               </div>
 
@@ -275,12 +313,28 @@ const Contact = () => {
           <p className="text-muted-foreground mb-6">
             Speak directly with our friendly team
           </p>
-          <Button variant="hero" size="xl" asChild>
-            <a href="tel:07960130449">
-              <Phone className="w-5 h-5 mr-2" />
-              07960 130449
-            </a>
-          </Button>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button variant="hero" size="xl" asChild>
+              <a href="tel:07960130449">
+                <Phone className="w-5 h-5 mr-2" />
+                07960 130449
+              </a>
+            </Button>
+            <Button 
+              size="xl"
+              className="bg-[#25D366] hover:bg-[#20bd5a] text-white"
+              asChild
+            >
+              <a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <MessageCircle className="w-5 h-5 mr-2" />
+                WhatsApp
+              </a>
+            </Button>
+          </div>
         </div>
       </section>
     </main>

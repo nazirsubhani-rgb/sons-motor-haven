@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
-import { Shield, CreditCard, Car, Search, Filter } from "lucide-react";
+import { Shield, CreditCard, Car, Search, SlidersHorizontal, ArrowUpDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -12,6 +12,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
+import { Label } from "@/components/ui/label";
 
 interface Vehicle {
   id: string;
@@ -32,8 +33,19 @@ const Stock = () => {
   const [vehicles, setVehicles] = useState<Vehicle[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
-  const [priceFilter, setPriceFilter] = useState("all");
+  const [showFilters, setShowFilters] = useState(false);
+  
+  // Filters
+  const [makeFilter, setMakeFilter] = useState("all");
+  const [modelFilter, setModelFilter] = useState("all");
+  const [yearFilter, setYearFilter] = useState("all");
+  const [transmissionFilter, setTransmissionFilter] = useState("all");
   const [fuelFilter, setFuelFilter] = useState("all");
+  const [priceMinFilter, setPriceMinFilter] = useState("");
+  const [priceMaxFilter, setPriceMaxFilter] = useState("");
+  
+  // Sorting
+  const [sortBy, setSortBy] = useState("newest");
 
   useEffect(() => {
     fetchVehicles();
@@ -55,6 +67,24 @@ const Stock = () => {
     }
   };
 
+  // Get unique values for filter dropdowns
+  const uniqueMakes = useMemo(() => 
+    [...new Set(vehicles.map(v => v.make))].sort(), 
+    [vehicles]
+  );
+  
+  const uniqueModels = useMemo(() => {
+    const filtered = makeFilter !== "all" 
+      ? vehicles.filter(v => v.make === makeFilter)
+      : vehicles;
+    return [...new Set(filtered.map(v => v.model))].sort();
+  }, [vehicles, makeFilter]);
+
+  const uniqueYears = useMemo(() => 
+    [...new Set(vehicles.map(v => v.year))].sort((a, b) => b - a), 
+    [vehicles]
+  );
+
   const badges = [
     { icon: Shield, label: "Warranty Included" },
     { icon: CreditCard, label: "Finance Available" },
@@ -66,25 +96,58 @@ const Stock = () => {
     return mainImage?.image_url || vehicle.vehicle_images?.[0]?.image_url;
   };
 
-  const filteredVehicles = vehicles.filter((v) => {
-    const searchLower = searchQuery.toLowerCase();
-    const matchesSearch =
-      v.make.toLowerCase().includes(searchLower) ||
-      v.model.toLowerCase().includes(searchLower) ||
-      v.year.toString().includes(searchLower);
+  // Filter and sort vehicles
+  const filteredVehicles = useMemo(() => {
+    let result = vehicles.filter((v) => {
+      const searchLower = searchQuery.toLowerCase();
+      const matchesSearch =
+        v.make.toLowerCase().includes(searchLower) ||
+        v.model.toLowerCase().includes(searchLower) ||
+        v.year.toString().includes(searchLower) ||
+        (v.trim?.toLowerCase().includes(searchLower) ?? false);
 
-    const matchesPrice =
-      priceFilter === "all" ||
-      (priceFilter === "under10k" && v.price < 10000) ||
-      (priceFilter === "10k-20k" && v.price >= 10000 && v.price < 20000) ||
-      (priceFilter === "20k-30k" && v.price >= 20000 && v.price < 30000) ||
-      (priceFilter === "over30k" && v.price >= 30000);
+      const matchesMake = makeFilter === "all" || v.make === makeFilter;
+      const matchesModel = modelFilter === "all" || v.model === modelFilter;
+      const matchesYear = yearFilter === "all" || v.year.toString() === yearFilter;
+      const matchesTransmission = transmissionFilter === "all" || v.transmission === transmissionFilter;
+      const matchesFuel = fuelFilter === "all" || v.fuel_type === fuelFilter;
+      
+      const priceMin = priceMinFilter ? parseInt(priceMinFilter) : 0;
+      const priceMax = priceMaxFilter ? parseInt(priceMaxFilter) : Infinity;
+      const matchesPrice = v.price >= priceMin && v.price <= priceMax;
 
-    const matchesFuel =
-      fuelFilter === "all" || v.fuel_type === fuelFilter;
+      return matchesSearch && matchesMake && matchesModel && matchesYear && 
+             matchesTransmission && matchesFuel && matchesPrice;
+    });
 
-    return matchesSearch && matchesPrice && matchesFuel;
-  });
+    // Sort results
+    switch (sortBy) {
+      case "price-low":
+        result.sort((a, b) => a.price - b.price);
+        break;
+      case "price-high":
+        result.sort((a, b) => b.price - a.price);
+        break;
+      case "year-new":
+        result.sort((a, b) => b.year - a.year);
+        break;
+      case "year-old":
+        result.sort((a, b) => a.year - b.year);
+        break;
+      case "mileage-low":
+        result.sort((a, b) => a.mileage - b.mileage);
+        break;
+      case "mileage-high":
+        result.sort((a, b) => b.mileage - a.mileage);
+        break;
+      default:
+        // newest first (by created_at, already sorted from DB)
+        break;
+    }
+
+    return result;
+  }, [vehicles, searchQuery, makeFilter, modelFilter, yearFilter, 
+      transmissionFilter, fuelFilter, priceMinFilter, priceMaxFilter, sortBy]);
 
   const getStatusBadge = (status: string) => {
     switch (status) {
@@ -104,6 +167,22 @@ const Stock = () => {
         return null;
     }
   };
+
+  const clearFilters = () => {
+    setMakeFilter("all");
+    setModelFilter("all");
+    setYearFilter("all");
+    setTransmissionFilter("all");
+    setFuelFilter("all");
+    setPriceMinFilter("");
+    setPriceMaxFilter("");
+    setSearchQuery("");
+    setSortBy("newest");
+  };
+
+  const hasActiveFilters = makeFilter !== "all" || modelFilter !== "all" || 
+    yearFilter !== "all" || transmissionFilter !== "all" || fuelFilter !== "all" ||
+    priceMinFilter !== "" || priceMaxFilter !== "";
 
   return (
     <main className="min-h-screen">
@@ -137,43 +216,171 @@ const Stock = () => {
         </div>
       </section>
 
-      {/* Filters */}
+      {/* Search and Filters */}
       <section className="py-8 bg-background border-b border-border">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row gap-4 max-w-4xl mx-auto">
+          {/* Search Bar and Toggle */}
+          <div className="flex flex-col md:flex-row gap-4 max-w-6xl mx-auto mb-6">
             <div className="relative flex-1">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
               <Input
-                placeholder="Search by make, model, or year..."
+                placeholder="Search by make, model, year, or trim..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="pl-10"
               />
             </div>
-            <Select value={priceFilter} onValueChange={setPriceFilter}>
-              <SelectTrigger className="w-full md:w-48">
-                <SelectValue placeholder="Price Range" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">All Prices</SelectItem>
-                <SelectItem value="under10k">Under £10,000</SelectItem>
-                <SelectItem value="10k-20k">£10,000 - £20,000</SelectItem>
-                <SelectItem value="20k-30k">£20,000 - £30,000</SelectItem>
-                <SelectItem value="over30k">Over £30,000</SelectItem>
-              </SelectContent>
-            </Select>
-            <Select value={fuelFilter} onValueChange={setFuelFilter}>
-              <SelectTrigger className="w-full md:w-48">
-                <SelectValue placeholder="Fuel Type" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">All Fuels</SelectItem>
-                <SelectItem value="petrol">Petrol</SelectItem>
-                <SelectItem value="diesel">Diesel</SelectItem>
-                <SelectItem value="electric">Electric</SelectItem>
-                <SelectItem value="hybrid">Hybrid</SelectItem>
-              </SelectContent>
-            </Select>
+            <div className="flex gap-2">
+              <Button
+                variant="outline"
+                onClick={() => setShowFilters(!showFilters)}
+                className={showFilters ? "bg-gold text-secondary" : ""}
+              >
+                <SlidersHorizontal className="w-4 h-4 mr-2" />
+                Filters
+                {hasActiveFilters && (
+                  <span className="ml-2 bg-gold text-secondary text-xs px-2 py-0.5 rounded-full">
+                    Active
+                  </span>
+                )}
+              </Button>
+              <Select value={sortBy} onValueChange={setSortBy}>
+                <SelectTrigger className="w-48">
+                  <ArrowUpDown className="w-4 h-4 mr-2" />
+                  <SelectValue placeholder="Sort by" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="newest">Newest First</SelectItem>
+                  <SelectItem value="price-low">Price: Low to High</SelectItem>
+                  <SelectItem value="price-high">Price: High to Low</SelectItem>
+                  <SelectItem value="year-new">Year: Newest First</SelectItem>
+                  <SelectItem value="year-old">Year: Oldest First</SelectItem>
+                  <SelectItem value="mileage-low">Mileage: Low to High</SelectItem>
+                  <SelectItem value="mileage-high">Mileage: High to Low</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+          </div>
+
+          {/* Expandable Filters */}
+          {showFilters && (
+            <div className="max-w-6xl mx-auto bg-card p-6 rounded-xl shadow-card animate-fade-in">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="make-filter">Make</Label>
+                  <Select value={makeFilter} onValueChange={(v) => {
+                    setMakeFilter(v);
+                    setModelFilter("all"); // Reset model when make changes
+                  }}>
+                    <SelectTrigger id="make-filter">
+                      <SelectValue placeholder="All Makes" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="all">All Makes</SelectItem>
+                      {uniqueMakes.map(make => (
+                        <SelectItem key={make} value={make}>{make}</SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="model-filter">Model</Label>
+                  <Select value={modelFilter} onValueChange={setModelFilter}>
+                    <SelectTrigger id="model-filter">
+                      <SelectValue placeholder="All Models" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="all">All Models</SelectItem>
+                      {uniqueModels.map(model => (
+                        <SelectItem key={model} value={model}>{model}</SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="year-filter">Year</Label>
+                  <Select value={yearFilter} onValueChange={setYearFilter}>
+                    <SelectTrigger id="year-filter">
+                      <SelectValue placeholder="All Years" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="all">All Years</SelectItem>
+                      {uniqueYears.map(year => (
+                        <SelectItem key={year} value={year.toString()}>{year}</SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="transmission-filter">Transmission</Label>
+                  <Select value={transmissionFilter} onValueChange={setTransmissionFilter}>
+                    <SelectTrigger id="transmission-filter">
+                      <SelectValue placeholder="All" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="all">All</SelectItem>
+                      <SelectItem value="automatic">Automatic</SelectItem>
+                      <SelectItem value="manual">Manual</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="fuel-filter">Fuel Type</Label>
+                  <Select value={fuelFilter} onValueChange={setFuelFilter}>
+                    <SelectTrigger id="fuel-filter">
+                      <SelectValue placeholder="All Fuels" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="all">All Fuels</SelectItem>
+                      <SelectItem value="petrol">Petrol</SelectItem>
+                      <SelectItem value="diesel">Diesel</SelectItem>
+                      <SelectItem value="electric">Electric</SelectItem>
+                      <SelectItem value="hybrid">Hybrid</SelectItem>
+                      <SelectItem value="plug-in hybrid">Plug-in Hybrid</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div className="space-y-2">
+                  <Label>Price Range (£)</Label>
+                  <div className="flex gap-2">
+                    <Input
+                      type="number"
+                      placeholder="Min"
+                      value={priceMinFilter}
+                      onChange={(e) => setPriceMinFilter(e.target.value)}
+                      className="w-full"
+                    />
+                    <Input
+                      type="number"
+                      placeholder="Max"
+                      value={priceMaxFilter}
+                      onChange={(e) => setPriceMaxFilter(e.target.value)}
+                      className="w-full"
+                    />
+                  </div>
+                </div>
+              </div>
+              
+              {hasActiveFilters && (
+                <div className="mt-4 flex justify-end">
+                  <Button variant="ghost" onClick={clearFilters} className="text-muted-foreground">
+                    Clear all filters
+                  </Button>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Results Count */}
+          <div className="max-w-6xl mx-auto mt-4">
+            <p className="text-sm text-muted-foreground">
+              Showing {filteredVehicles.length} of {vehicles.length} vehicles
+            </p>
           </div>
         </div>
       </section>
@@ -201,9 +408,16 @@ const Stock = () => {
                   ? "We're currently updating our stock. Please check back soon!"
                   : "Try adjusting your search filters."}
               </p>
-              <Button variant="gold" asChild>
-                <a href="tel:07960130449">Call Us: 07960 130449</a>
-              </Button>
+              {hasActiveFilters && (
+                <Button variant="outline" onClick={clearFilters} className="mb-4">
+                  Clear Filters
+                </Button>
+              )}
+              <div className="mt-4">
+                <Button variant="gold" asChild>
+                  <a href="tel:07960130449">Call Us: 07960 130449</a>
+                </Button>
+              </div>
             </div>
           ) : (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">

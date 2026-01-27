@@ -1,7 +1,12 @@
 import { Link } from "react-router-dom";
-import { Phone, Mail, MapPin, Facebook, Instagram, Twitter } from "lucide-react";
+import { Phone, Mail, MapPin, Facebook, Instagram, Twitter, MessageCircle } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const Footer = () => {
+  const phoneNumber = "447960130449";
+  const whatsappMessage = "Hello! I'm interested in learning more about your vehicles.";
+  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+
   return (
     <footer className="bg-secondary text-secondary-foreground">
       {/* Main Footer */}
@@ -20,6 +25,21 @@ const Footer = () => {
             <p className="text-muted-foreground text-sm leading-relaxed">
               Your trusted partner for quality used cars with comprehensive warranty coverage. Family-run business committed to honest advice and customer satisfaction.
             </p>
+            {/* WhatsApp Button */}
+            <Button 
+              variant="outline" 
+              className="border-[#25D366] text-[#25D366] hover:bg-[#25D366] hover:text-white"
+              asChild
+            >
+              <a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <MessageCircle className="w-4 h-4 mr-2" />
+                Chat with us on WhatsApp
+              </a>
+            </Button>
           </div>
 
           {/* Quick Links */}
@@ -68,7 +88,7 @@ const Footer = () => {
               </li>
               <li className="flex items-start gap-3 text-muted-foreground text-sm">
                 <MapPin className="w-4 h-4 text-gold flex-shrink-0 mt-0.5" />
-                <span>United Kingdom</span>
+                <span>121 Augustine Road, Harrow, HA3 5NT</span>
               </li>
             </ul>
           </div>
