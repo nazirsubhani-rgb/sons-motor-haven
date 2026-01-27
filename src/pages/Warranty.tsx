@@ -1,4 +1,4 @@
-import { Shield, CheckCircle, Wrench, Phone, Clock, MapPin, HelpCircle, ArrowRight, Car, Settings, Zap, Cog } from "lucide-react";
+import { Shield, CheckCircle, Wrench, Phone, Clock, MapPin, HelpCircle, ArrowRight, Car, Settings, Zap, Cog, MessageCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import {
@@ -9,6 +9,14 @@ import {
 } from "@/components/ui/accordion";
 
 const Warranty = () => {
+  const phoneNumber = "447960130449";
+  const whatsappMessage = "Hello! I'd like to ask about your warranty options.";
+
+  const handleWhatsAppClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`, '_blank', 'noopener,noreferrer');
+  };
+
   const benefits = [
     {
       icon: Shield,
@@ -102,28 +110,28 @@ const Warranty = () => {
 
   return (
     <main className="min-h-screen">
-      {/* Hero Section - Autoguard Branded */}
-      <section className="bg-autoguard-black py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-autoguard-red/20 to-transparent" />
+      {/* Hero Section - Gold/Black Theme */}
+      <section className="bg-secondary py-16 md:py-20 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-gold/10 to-transparent" />
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center max-w-3xl mx-auto">
-            <div className="inline-flex items-center gap-2 bg-autoguard-red/20 border border-autoguard-red/40 rounded-full px-4 py-2 mb-6">
-              <Shield className="w-4 h-4 text-autoguard-red" />
-              <span className="text-autoguard-red text-sm font-medium">
+            <div className="inline-flex items-center gap-2 bg-gold/20 border border-gold/40 rounded-full px-4 py-2 mb-6">
+              <Shield className="w-4 h-4 text-gold" />
+              <span className="text-gold text-sm font-medium">
                 Autoguard Warranty Partner
               </span>
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-white mt-3 mb-6">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-display font-bold text-secondary-foreground mt-3 mb-6">
               Autoguard Warranty
-              <span className="block text-autoguard-red mt-2">Peace of Mind</span>
+              <span className="block text-gold mt-2 italic">Peace of Mind</span>
             </h1>
-            <p className="text-gray-300 text-lg md:text-xl max-w-2xl mx-auto">
+            <p className="text-muted-foreground text-base md:text-lg lg:text-xl max-w-2xl mx-auto">
               Drive with confidence knowing your vehicle is protected by one of the UK's most trusted warranty providers.
             </p>
             <div className="mt-8">
               <Button 
+                variant="gold"
                 size="xl"
-                className="bg-autoguard-red hover:bg-autoguard-red-dark text-white"
                 asChild
               >
                 <Link to="/contact">
@@ -137,25 +145,25 @@ const Warranty = () => {
       </section>
 
       {/* Partnership Section */}
-      <section className="py-20 bg-white">
+      <section className="py-16 md:py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
-            <div className="bg-gradient-to-r from-autoguard-black to-gray-900 rounded-2xl p-8 md:p-12 shadow-xl">
-              <div className="flex flex-col md:flex-row items-center gap-8">
-                <div className="w-48 h-32 bg-white rounded-xl flex items-center justify-center flex-shrink-0 p-4">
+            <div className="bg-secondary rounded-2xl p-6 md:p-8 lg:p-12 shadow-xl">
+              <div className="flex flex-col md:flex-row items-center gap-6 md:gap-8">
+                <div className="w-32 h-24 md:w-48 md:h-32 bg-white rounded-xl flex items-center justify-center flex-shrink-0 p-4">
                   <div className="text-center">
-                    <Shield className="w-12 h-12 text-autoguard-red mx-auto mb-2" />
-                    <span className="text-autoguard-black font-bold text-lg">AUTOGUARD</span>
+                    <Shield className="w-10 h-10 md:w-12 md:h-12 text-gold mx-auto mb-2" />
+                    <span className="text-charcoal font-bold text-base md:text-lg tracking-wide">AUTOGUARD</span>
                   </div>
                 </div>
                 <div className="text-center md:text-left">
-                  <h2 className="text-2xl md:text-3xl font-display font-bold text-white mb-4">
-                    Warranty Protection in Partnership with <span className="text-autoguard-red">Autoguard</span>
+                  <h2 className="text-xl md:text-2xl lg:text-3xl font-display font-bold text-secondary-foreground mb-4">
+                    Warranty Protection in Partnership with <span className="text-gold">Autoguard</span>
                   </h2>
-                  <p className="text-gray-300 leading-relaxed mb-4">
+                  <p className="text-muted-foreground leading-relaxed mb-4 text-sm md:text-base">
                     Autoguard is one of the UK's premier warranty providers, trusted by thousands of motorists and dealers nationwide. Every vehicle we sell benefits from their comprehensive protection packages and dedicated claims support.
                   </p>
-                  <p className="text-autoguard-red font-semibold text-lg">
+                  <p className="text-gold font-semibold text-base md:text-lg italic">
                     Warranty peace of mind in partnership with Autoguard.
                   </p>
                 </div>
@@ -166,33 +174,33 @@ const Warranty = () => {
       </section>
 
       {/* Benefits Grid */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-16 md:py-20 bg-cream-dark">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-autoguard-red text-sm font-medium tracking-widest uppercase">
+            <span className="text-gold text-sm font-medium tracking-widest uppercase">
               Why Choose Autoguard
             </span>
-            <h2 className="text-3xl md:text-4xl font-display font-bold text-gray-900 mt-3">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-display font-bold text-foreground mt-3">
               Key Benefits of Our Warranty
             </h2>
-            <p className="text-gray-600 mt-4">
+            <p className="text-muted-foreground mt-4 text-sm md:text-base">
               Comprehensive protection designed to keep you on the road with complete confidence.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {benefits.map((benefit, index) => (
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
+            {benefits.map((benefit) => (
               <div
                 key={benefit.title}
-                className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-t-4 border-autoguard-red"
+                className="bg-card p-6 md:p-8 rounded-xl shadow-card hover:shadow-elevated transition-all duration-300 hover:-translate-y-1 border-t-4 border-gold"
               >
-                <div className="w-14 h-14 bg-autoguard-red/10 rounded-xl flex items-center justify-center mb-6">
-                  <benefit.icon className="w-7 h-7 text-autoguard-red" />
+                <div className="w-12 h-12 md:w-14 md:h-14 bg-gold/10 rounded-xl flex items-center justify-center mb-4 md:mb-6">
+                  <benefit.icon className="w-6 h-6 md:w-7 md:h-7 text-gold" />
                 </div>
-                <h3 className="text-lg font-display font-semibold text-gray-900 mb-3">
+                <h3 className="text-base md:text-lg font-display font-semibold text-foreground mb-3">
                   {benefit.title}
                 </h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
+                <p className="text-muted-foreground text-sm leading-relaxed">
                   {benefit.description}
                 </p>
               </div>
@@ -202,36 +210,36 @@ const Warranty = () => {
       </section>
 
       {/* Coverage Section */}
-      <section className="py-20 bg-autoguard-black">
+      <section className="py-16 md:py-20 bg-secondary">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <span className="text-autoguard-red text-sm font-medium tracking-widest uppercase">
+            <span className="text-gold text-sm font-medium tracking-widest uppercase">
               What's Covered
             </span>
-            <h2 className="text-3xl md:text-4xl font-display font-bold text-white mt-3">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-display font-bold text-secondary-foreground mt-3">
               Comprehensive Component Coverage
             </h2>
-            <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
+            <p className="text-muted-foreground mt-4 max-w-2xl mx-auto text-sm md:text-base">
               Our warranty packages protect the vital mechanical and electrical systems that keep your vehicle running smoothly.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 max-w-6xl mx-auto">
             {coverageCategories.map((category) => (
               <div
                 key={category.title}
-                className="bg-gray-900 rounded-xl p-6 border border-gray-800"
+                className="bg-charcoal-light rounded-xl p-5 md:p-6 border border-charcoal"
               >
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 bg-autoguard-red rounded-lg flex items-center justify-center">
-                    <category.icon className="w-5 h-5 text-white" />
+                  <div className="w-9 h-9 md:w-10 md:h-10 bg-gold rounded-lg flex items-center justify-center">
+                    <category.icon className="w-4 h-4 md:w-5 md:h-5 text-secondary" />
                   </div>
-                  <h3 className="text-lg font-semibold text-white">{category.title}</h3>
+                  <h3 className="text-base md:text-lg font-semibold text-secondary-foreground">{category.title}</h3>
                 </div>
                 <ul className="space-y-2">
                   {category.items.map((item) => (
-                    <li key={item} className="flex items-center gap-2 text-gray-300 text-sm">
-                      <CheckCircle className="w-4 h-4 text-autoguard-red flex-shrink-0" />
+                    <li key={item} className="flex items-center gap-2 text-muted-foreground text-xs md:text-sm">
+                      <CheckCircle className="w-3 h-3 md:w-4 md:h-4 text-gold flex-shrink-0" />
                       {item}
                     </li>
                   ))}
@@ -243,22 +251,22 @@ const Warranty = () => {
       </section>
 
       {/* How Claims Work */}
-      <section className="py-20 bg-white">
+      <section className="py-16 md:py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-autoguard-red text-sm font-medium tracking-widest uppercase">
+            <span className="text-gold text-sm font-medium tracking-widest uppercase">
               Simple Process
             </span>
-            <h2 className="text-3xl md:text-4xl font-display font-bold text-gray-900 mt-3">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-display font-bold text-foreground mt-3">
               How Claims & Repairs Work
             </h2>
-            <p className="text-gray-600 mt-4">
+            <p className="text-muted-foreground mt-4 text-sm md:text-base">
               When something goes wrong, getting it fixed is straightforward with our streamlined claims process.
             </p>
           </div>
 
           <div className="max-w-5xl mx-auto">
-            <div className="grid md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-4">
               {[
                 {
                   step: "1",
@@ -283,16 +291,16 @@ const Warranty = () => {
               ].map((item, index) => (
                 <div key={item.step} className="relative">
                   <div className="text-center">
-                    <div className="w-16 h-16 bg-autoguard-red rounded-full flex items-center justify-center mx-auto mb-4 relative z-10">
-                      <span className="text-white font-bold text-2xl">{item.step}</span>
+                    <div className="w-12 h-12 md:w-16 md:h-16 bg-gold rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4 relative z-10">
+                      <span className="text-secondary font-bold text-lg md:text-2xl">{item.step}</span>
                     </div>
                     {index < 3 && (
-                      <div className="hidden md:block absolute top-8 left-[calc(50%+32px)] w-[calc(100%-64px)] h-0.5 bg-autoguard-red/30" />
+                      <div className="hidden md:block absolute top-6 md:top-8 left-[calc(50%+24px)] md:left-[calc(50%+32px)] w-[calc(100%-48px)] md:w-[calc(100%-64px)] h-0.5 bg-gold/30" />
                     )}
-                    <h3 className="text-lg font-display font-semibold text-gray-900 mb-2">
+                    <h3 className="text-sm md:text-lg font-display font-semibold text-foreground mb-1 md:mb-2">
                       {item.title}
                     </h3>
-                    <p className="text-gray-600 text-sm">
+                    <p className="text-muted-foreground text-xs md:text-sm hidden sm:block">
                       {item.description}
                     </p>
                   </div>
@@ -304,35 +312,35 @@ const Warranty = () => {
       </section>
 
       {/* Extended Warranty */}
-      <section className="py-20 bg-gradient-to-br from-autoguard-red to-autoguard-red-dark">
+      <section className="py-16 md:py-20 bg-gradient-gold">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <Wrench className="w-16 h-16 text-white mx-auto mb-6" />
-            <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-4">
+            <Wrench className="w-12 h-12 md:w-16 md:h-16 text-secondary mx-auto mb-6" />
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-display font-bold text-secondary mb-4">
               Extended Warranty Options
             </h2>
-            <p className="text-white/90 mb-8 max-w-2xl mx-auto text-lg">
+            <p className="text-secondary/80 mb-8 max-w-2xl mx-auto text-sm md:text-lg">
               Looking for longer-term protection? Our extended warranty packages provide coverage for up to 24 months, ensuring continued peace of mind well into the future.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
-                size="xl"
-                className="bg-white text-autoguard-red hover:bg-gray-100"
+                size="lg"
+                className="bg-secondary text-gold hover:bg-charcoal-light"
                 asChild
               >
                 <Link to="/contact">
                   Enquire About Extended Warranty
-                  <ArrowRight className="w-5 h-5 ml-2" />
+                  <ArrowRight className="w-4 h-4 md:w-5 md:h-5 ml-2" />
                 </Link>
               </Button>
               <Button 
-                size="xl"
+                size="lg"
                 variant="outline"
-                className="border-white text-white hover:bg-white/10"
+                className="border-secondary text-secondary hover:bg-secondary/10"
                 asChild
               >
                 <a href="tel:07960130449">
-                  <Phone className="w-5 h-5 mr-2" />
+                  <Phone className="w-4 h-4 md:w-5 md:h-5 mr-2" />
                   Call 07960 130449
                 </a>
               </Button>
@@ -342,30 +350,30 @@ const Warranty = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-16 md:py-20 bg-cream-dark">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-12">
-              <HelpCircle className="w-12 h-12 text-autoguard-red mx-auto mb-4" />
-              <h2 className="text-3xl md:text-4xl font-display font-bold text-gray-900">
+              <HelpCircle className="w-10 h-10 md:w-12 md:h-12 text-gold mx-auto mb-4" />
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-display font-bold text-foreground">
                 Frequently Asked Questions
               </h2>
-              <p className="text-gray-600 mt-4">
+              <p className="text-muted-foreground mt-4 text-sm md:text-base">
                 Find answers to the most common questions about our warranty coverage.
               </p>
             </div>
 
-            <Accordion type="single" collapsible className="space-y-4">
+            <Accordion type="single" collapsible className="space-y-3 md:space-y-4">
               {faqs.map((faq, index) => (
                 <AccordionItem
                   key={index}
                   value={`item-${index}`}
-                  className="bg-white rounded-xl px-6 border border-gray-200 shadow-sm"
+                  className="bg-card rounded-xl px-4 md:px-6 border border-border shadow-sm"
                 >
-                  <AccordionTrigger className="text-left font-semibold text-gray-900 hover:text-autoguard-red hover:no-underline py-6">
+                  <AccordionTrigger className="text-left font-semibold text-foreground hover:text-gold hover:no-underline py-4 md:py-6 text-sm md:text-base">
                     {faq.question}
                   </AccordionTrigger>
-                  <AccordionContent className="text-gray-600 pb-6 leading-relaxed">
+                  <AccordionContent className="text-muted-foreground pb-4 md:pb-6 leading-relaxed text-sm">
                     {faq.answer}
                   </AccordionContent>
                 </AccordionItem>
@@ -376,35 +384,32 @@ const Warranty = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-autoguard-black">
+      <section className="py-16 md:py-20 bg-secondary">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-6">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-display font-bold text-secondary-foreground mb-6">
             Questions About Our Warranty?
           </h2>
-          <p className="text-gray-400 max-w-xl mx-auto mb-8 text-lg">
+          <p className="text-muted-foreground max-w-xl mx-auto mb-8 text-sm md:text-lg">
             Our team is here to explain your warranty options and help you choose the right protection for your vehicle.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
-              size="xl"
-              className="bg-autoguard-red hover:bg-autoguard-red-dark text-white"
+              variant="gold"
+              size="lg"
               asChild
             >
               <Link to="/contact">
                 Ask About Warranty
-                <ArrowRight className="w-5 h-5 ml-2" />
+                <ArrowRight className="w-4 h-4 md:w-5 md:h-5 ml-2" />
               </Link>
             </Button>
             <Button 
-              size="xl"
-              variant="outline"
-              className="border-white text-white hover:bg-white/10"
-              asChild
+              size="lg"
+              className="bg-[#25D366] hover:bg-[#20bd5a] text-white"
+              onClick={handleWhatsAppClick}
             >
-              <a href="tel:07960130449">
-                <Phone className="w-5 h-5 mr-2" />
-                07960 130449
-              </a>
+              <MessageCircle className="w-4 h-4 md:w-5 md:h-5 mr-2" />
+              Chat on WhatsApp
             </Button>
           </div>
         </div>

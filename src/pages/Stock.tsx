@@ -187,26 +187,26 @@ const Stock = () => {
   return (
     <main className="min-h-screen">
       {/* Hero Section */}
-      <section className="bg-gradient-hero py-20">
+      <section className="bg-gradient-hero py-12 md:py-20">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto">
             <span className="text-gold text-sm font-medium tracking-widest uppercase">
               Our Stock
             </span>
-            <h1 className="text-4xl md:text-5xl font-display font-bold text-secondary-foreground mt-3 mb-6">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-secondary-foreground mt-3 mb-4 md:mb-6">
               Quality Used Cars
             </h1>
-            <p className="text-muted-foreground text-lg">
+            <p className="text-muted-foreground text-base md:text-lg">
               Browse our selection of carefully inspected, warranty-backed vehicles. All competitively priced with no hidden fees.
             </p>
-            <div className="flex flex-wrap justify-center gap-6 mt-8">
+            <div className="flex flex-wrap justify-center gap-3 md:gap-6 mt-6 md:mt-8">
               {badges.map((badge) => (
                 <div
                   key={badge.label}
-                  className="flex items-center gap-2 bg-charcoal-light px-4 py-2 rounded-full"
+                  className="flex items-center gap-2 bg-charcoal-light px-3 md:px-4 py-2 rounded-full"
                 >
-                  <badge.icon className="w-4 h-4 text-gold" />
-                  <span className="text-secondary-foreground text-sm font-medium">
+                  <badge.icon className="w-3 h-3 md:w-4 md:h-4 text-gold" />
+                  <span className="text-secondary-foreground text-xs md:text-sm font-medium">
                     {badge.label}
                   </span>
                 </div>
@@ -245,7 +245,7 @@ const Stock = () => {
                 )}
               </Button>
               <Select value={sortBy} onValueChange={setSortBy}>
-                <SelectTrigger className="w-48">
+                <SelectTrigger className="w-full sm:w-48">
                   <ArrowUpDown className="w-4 h-4 mr-2" />
                   <SelectValue placeholder="Sort by" />
                 </SelectTrigger>

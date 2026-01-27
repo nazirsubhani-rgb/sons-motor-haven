@@ -1,11 +1,16 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, Facebook, Instagram, Twitter, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import logo from "@/assets/wm-sons-logo.jpg";
 
 const Footer = () => {
   const phoneNumber = "447960130449";
   const whatsappMessage = "Hello! I'm interested in learning more about your vehicles.";
-  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+  
+  const handleWhatsAppClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`, '_blank', 'noopener,noreferrer');
+  };
 
   return (
     <footer className="bg-secondary text-secondary-foreground">
@@ -14,14 +19,13 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Company Info */}
           <div className="space-y-4">
-            <div className="flex flex-col">
-              <span className="text-gold font-display text-2xl font-bold tracking-wide">
-                WM & Sons
-              </span>
-              <span className="text-gold/80 text-sm tracking-widest uppercase">
-                Motors Ltd
-              </span>
-            </div>
+            <Link to="/" className="inline-block">
+              <img 
+                src={logo} 
+                alt="WM & Sons Motors Ltd" 
+                className="h-16 w-auto"
+              />
+            </Link>
             <p className="text-muted-foreground text-sm leading-relaxed">
               Your trusted partner for quality used cars with comprehensive warranty coverage. Family-run business committed to honest advice and customer satisfaction.
             </p>
@@ -29,16 +33,10 @@ const Footer = () => {
             <Button 
               variant="outline" 
               className="border-[#25D366] text-[#25D366] hover:bg-[#25D366] hover:text-white"
-              asChild
+              onClick={handleWhatsAppClick}
             >
-              <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <MessageCircle className="w-4 h-4 mr-2" />
-                Chat with us on WhatsApp
-              </a>
+              <MessageCircle className="w-4 h-4 mr-2" />
+              Chat with us on WhatsApp
             </Button>
           </div>
 
