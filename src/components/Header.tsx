@@ -18,12 +18,22 @@ const Header = () => {
 
   const isActive = (path: string) => location.pathname === path;
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
+    // Always scroll to top
+    window.scrollTo({ top: 0, behavior: "instant" });
+    
+    // If already on the same path, prevent default and just scroll
+    if (location.pathname === path) {
+      e.preventDefault();
+    }
+  };
+
   return (
     <header className="bg-secondary sticky top-0 z-50">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center">
+          <Link to="/" onClick={(e) => handleNavClick(e, "/")} className="flex items-center">
             <img 
               src={logo} 
               alt="WM & Sons Motors Ltd" 
@@ -37,7 +47,8 @@ const Header = () => {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`text-sm font-medium transition-colors duration-300 hover:text-gold ${
+                onClick={(e) => handleNavClick(e, link.path)}
+                className={`text-sm font-medium tracking-wider transition-colors duration-300 hover:text-gold ${
                   isActive(link.path) ? "text-gold" : "text-secondary-foreground"
                 }`}
               >
@@ -56,7 +67,7 @@ const Header = () => {
               <span className="font-medium">07960 130449</span>
             </a>
             <Button variant="gold" size="sm" asChild>
-              <Link to="/contact">Get in Touch</Link>
+              <Link to="/contact" onClick={(e) => handleNavClick(e, "/contact")}>Get in Touch</Link>
             </Button>
           </div>
 
@@ -77,10 +88,13 @@ const Header = () => {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`block py-3 text-sm font-medium transition-colors hover:text-gold ${
+                className={`block py-3 text-sm font-medium tracking-wider transition-colors hover:text-gold ${
                   isActive(link.path) ? "text-gold" : "text-secondary-foreground"
                 }`}
-                onClick={() => setIsMenuOpen(false)}
+                onClick={(e) => {
+                  handleNavClick(e, link.path);
+                  setIsMenuOpen(false);
+                }}
               >
                 {link.name}
               </Link>
