@@ -18,7 +18,11 @@ const Contact = () => {
 
   const phoneNumber = "447960130449";
   const whatsappMessage = "Hello! I'm interested in learning more about your vehicles.";
-  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+
+  const handleWhatsAppClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`, '_blank', 'noopener,noreferrer');
+  };
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -89,16 +93,16 @@ const Contact = () => {
   return (
     <main className="min-h-screen">
       {/* Hero Section */}
-      <section className="bg-gradient-hero py-20">
+      <section className="bg-gradient-hero py-16 md:py-20">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto">
             <span className="text-gold text-sm font-medium tracking-widest uppercase">
               Contact Us
             </span>
-            <h1 className="text-4xl md:text-5xl font-display font-bold text-secondary-foreground mt-3 mb-6">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-secondary-foreground mt-3 mb-6">
               Get in Touch
             </h1>
-            <p className="text-muted-foreground text-lg">
+            <p className="text-muted-foreground text-base md:text-lg">
               Have a question or ready to find your next car? We'd love to hear from you.
             </p>
           </div>
@@ -106,33 +110,33 @@ const Contact = () => {
       </section>
 
       {/* Contact Section */}
-      <section className="py-20 bg-background">
+      <section className="py-12 md:py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <div className="grid lg:grid-cols-2 gap-12">
+            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
               {/* Contact Info */}
-              <div className="space-y-8">
+              <div className="space-y-6 md:space-y-8">
                 <div>
-                  <h2 className="text-2xl font-display font-bold text-foreground mb-4">
+                  <h2 className="text-xl md:text-2xl font-display font-bold text-foreground mb-4">
                     Contact Information
                   </h2>
-                  <p className="text-muted-foreground">
+                  <p className="text-muted-foreground text-sm md:text-base">
                     Reach out to us through any of the methods below. We aim to respond to all enquiries within 24 hours.
                   </p>
                 </div>
 
-                <div className="grid sm:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
                   {contactInfo.map((item) => (
                     <div
                       key={item.label}
-                      className="bg-cream-dark p-6 rounded-xl"
+                      className="bg-cream-dark p-4 md:p-6 rounded-xl"
                     >
-                      <div className="flex items-start gap-4">
-                        <div className="w-12 h-12 bg-gold/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                          <item.icon className="w-6 h-6 text-gold" />
+                      <div className="flex items-start gap-3 md:gap-4">
+                        <div className="w-10 h-10 md:w-12 md:h-12 bg-gold/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                          <item.icon className="w-5 h-5 md:w-6 md:h-6 text-gold" />
                         </div>
-                        <div>
-                          <h3 className="text-sm font-medium text-muted-foreground mb-1">
+                        <div className="min-w-0 flex-1">
+                          <h3 className="text-xs md:text-sm font-medium text-muted-foreground mb-1">
                             {item.label}
                           </h3>
                           {item.href ? (
@@ -140,12 +144,12 @@ const Contact = () => {
                               href={item.href}
                               target={item.label === "Location" ? "_blank" : undefined}
                               rel={item.label === "Location" ? "noopener noreferrer" : undefined}
-                              className="text-foreground font-semibold hover:text-gold transition-colors"
+                              className="text-foreground font-semibold text-sm md:text-base hover:text-gold transition-colors break-words"
                             >
                               {item.value}
                             </a>
                           ) : (
-                            <span className="text-foreground font-semibold">
+                            <span className="text-foreground font-semibold text-sm md:text-base">
                               {item.value}
                             </span>
                           )}
@@ -156,39 +160,33 @@ const Contact = () => {
                 </div>
 
                 {/* WhatsApp CTA */}
-                <div className="bg-[#25D366]/10 p-6 rounded-xl border border-[#25D366]/30">
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="w-12 h-12 bg-[#25D366] rounded-lg flex items-center justify-center">
-                      <MessageCircle className="w-6 h-6 text-white" />
+                <div className="bg-[#25D366]/10 p-4 md:p-6 rounded-xl border border-[#25D366]/30">
+                  <div className="flex items-center gap-3 md:gap-4 mb-4">
+                    <div className="w-10 h-10 md:w-12 md:h-12 bg-[#25D366] rounded-lg flex items-center justify-center">
+                      <MessageCircle className="w-5 h-5 md:w-6 md:h-6 text-white" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-foreground">
+                      <h3 className="text-base md:text-lg font-semibold text-foreground">
                         Chat on WhatsApp
                       </h3>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-xs md:text-sm text-muted-foreground">
                         Get instant responses
                       </p>
                     </div>
                   </div>
                   <Button 
                     className="w-full bg-[#25D366] hover:bg-[#20bd5a] text-white"
-                    asChild
+                    onClick={handleWhatsAppClick}
                   >
-                    <a
-                      href={whatsappUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <MessageCircle className="w-4 h-4 mr-2" />
-                      Chat with us on WhatsApp
-                    </a>
+                    <MessageCircle className="w-4 h-4 mr-2" />
+                    Chat with us on WhatsApp
                   </Button>
                 </div>
 
                 {/* Map */}
-                <div className="bg-cream-dark rounded-xl overflow-hidden h-64">
+                <div className="bg-cream-dark rounded-xl overflow-hidden h-48 md:h-64">
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2479.123456789!2d-0.3345!3d51.5890!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487611e5c123456%3A0x0!2s121%20Augustine%20Rd%2C%20Harrow%20HA3%205NT!5e0!3m2!1sen!2suk!4v1234567890"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2479.5!2d-0.3345!3d51.5890!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487611e5c123456%3A0x0!2s121%20Augustine%20Rd%2C%20Harrow%20HA3%205NT!5e0!3m2!1sen!2suk!4v1234567890"
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}
@@ -201,11 +199,11 @@ const Contact = () => {
               </div>
 
               {/* Contact Form */}
-              <div className="bg-card p-8 md:p-10 rounded-2xl shadow-card">
-                <h2 className="text-2xl font-display font-bold text-foreground mb-6">
+              <div className="bg-card p-6 md:p-8 lg:p-10 rounded-2xl shadow-card">
+                <h2 className="text-xl md:text-2xl font-display font-bold text-foreground mb-6">
                   Send Us a Message
                 </h2>
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
                   <div>
                     <label
                       htmlFor="name"
@@ -305,34 +303,28 @@ const Contact = () => {
       </section>
 
       {/* Quick CTA */}
-      <section className="py-16 bg-secondary">
+      <section className="py-12 md:py-16 bg-secondary">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-2xl font-display font-bold text-secondary-foreground mb-4">
+          <h2 className="text-xl md:text-2xl font-display font-bold text-secondary-foreground mb-4">
             Prefer to Call?
           </h2>
-          <p className="text-muted-foreground mb-6">
+          <p className="text-muted-foreground mb-6 text-sm md:text-base">
             Speak directly with our friendly team
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="hero" size="xl" asChild>
+            <Button variant="hero" size="lg" asChild className="text-sm md:text-base">
               <a href="tel:07960130449">
-                <Phone className="w-5 h-5 mr-2" />
+                <Phone className="w-4 h-4 md:w-5 md:h-5 mr-2" />
                 07960 130449
               </a>
             </Button>
             <Button 
-              size="xl"
-              className="bg-[#25D366] hover:bg-[#20bd5a] text-white"
-              asChild
+              size="lg"
+              className="bg-[#25D366] hover:bg-[#20bd5a] text-white text-sm md:text-base"
+              onClick={handleWhatsAppClick}
             >
-              <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <MessageCircle className="w-5 h-5 mr-2" />
-                WhatsApp
-              </a>
+              <MessageCircle className="w-4 h-4 md:w-5 md:h-5 mr-2" />
+              WhatsApp
             </Button>
           </div>
         </div>

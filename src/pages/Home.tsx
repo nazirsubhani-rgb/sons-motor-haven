@@ -39,7 +39,7 @@ const Home = () => {
   return (
     <main>
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center bg-gradient-hero overflow-hidden">
+      <section className="relative min-h-[85vh] md:min-h-[90vh] flex items-center bg-gradient-hero overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0">
           <img
@@ -52,37 +52,37 @@ const Home = () => {
 
         {/* Content */}
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-2xl space-y-8 animate-fade-in-up">
+          <div className="max-w-2xl space-y-6 md:space-y-8 animate-fade-in-up">
             <div className="space-y-2">
-              <span className="inline-block text-gold text-sm font-medium tracking-widest uppercase opacity-0 animate-fade-in stagger-1">
+              <span className="inline-block text-gold text-xs md:text-sm font-medium tracking-widest uppercase opacity-0 animate-fade-in stagger-1">
                 Welcome to WM & Sons Motors Ltd
               </span>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-secondary-foreground leading-tight opacity-0 animate-fade-in stagger-2">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-display font-bold text-secondary-foreground leading-tight opacity-0 animate-fade-in stagger-2">
                 Quality Used Cars{" "}
                 <span className="text-gold">You Can Trust</span>
               </h1>
             </div>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-xl opacity-0 animate-fade-in stagger-3">
+            <p className="text-base md:text-lg lg:text-xl text-muted-foreground max-w-xl opacity-0 animate-fade-in stagger-3">
               Peace of mind motoring with warranty included. Family-run dealership offering carefully selected vehicles at competitive prices.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 opacity-0 animate-fade-in stagger-4">
-              <Button variant="hero" size="xl" asChild>
+              <Button variant="hero" size="lg" asChild>
                 <Link to="/stock">
                   View Stock
-                  <ArrowRight className="w-5 h-5 ml-2" />
+                  <ArrowRight className="w-4 h-4 md:w-5 md:h-5 ml-2" />
                 </Link>
               </Button>
-              <Button variant="hero-outline" size="xl" asChild>
+              <Button variant="hero-outline" size="lg" asChild>
                 <Link to="/contact">Contact Us</Link>
               </Button>
             </div>
-            <div className="flex items-center gap-4 pt-4 opacity-0 animate-fade-in stagger-5">
+            <div className="flex items-center gap-4 pt-2 md:pt-4 opacity-0 animate-fade-in stagger-5">
               <a
                 href="tel:07960130449"
                 className="flex items-center gap-2 text-gold hover:text-gold-light transition-colors"
               >
-                <Phone className="w-5 h-5" />
-                <span className="font-semibold">07960 130449</span>
+                <Phone className="w-4 h-4 md:w-5 md:h-5" />
+                <span className="font-semibold text-sm md:text-base">07960 130449</span>
               </a>
             </div>
           </div>
@@ -90,31 +90,31 @@ const Home = () => {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="py-20 bg-background">
+      <section className="py-12 md:py-20 bg-background">
         <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="text-center max-w-3xl mx-auto mb-10 md:mb-16">
             <span className="text-gold text-sm font-medium tracking-widest uppercase">
               Why Choose Us
             </span>
-            <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mt-3">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-display font-bold text-foreground mt-3">
               The WM & Sons Difference
             </h2>
-            <p className="text-muted-foreground mt-4">
+            <p className="text-muted-foreground mt-4 text-sm md:text-base">
               We're not just selling cars – we're building relationships based on trust, quality, and exceptional service.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             {features.map((feature, index) => (
               <div
                 key={feature.title}
-                className="group p-8 bg-card rounded-xl shadow-card hover:shadow-elevated transition-all duration-300 hover:-translate-y-1"
+                className="group p-6 md:p-8 bg-card rounded-xl shadow-card hover:shadow-elevated transition-all duration-300 hover:-translate-y-1"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="w-14 h-14 rounded-xl bg-gold/10 flex items-center justify-center mb-6 group-hover:bg-gold/20 transition-colors">
-                  <feature.icon className="w-7 h-7 text-gold" />
+                <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl bg-gold/10 flex items-center justify-center mb-4 md:mb-6 group-hover:bg-gold/20 transition-colors">
+                  <feature.icon className="w-6 h-6 md:w-7 md:h-7 text-gold" />
                 </div>
-                <h3 className="text-lg font-display font-semibold text-foreground mb-3">
+                <h3 className="text-base md:text-lg font-display font-semibold text-foreground mb-2 md:mb-3">
                   {feature.title}
                 </h3>
                 <p className="text-muted-foreground text-sm leading-relaxed">
@@ -127,29 +127,29 @@ const Home = () => {
       </section>
 
       {/* Warranty Section */}
-      <section className="py-20 bg-secondary">
+      <section className="py-12 md:py-20 bg-secondary">
         <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            <div className="space-y-4 md:space-y-6">
               <span className="text-gold text-sm font-medium tracking-widest uppercase">
                 Warranty Protection
               </span>
-              <h2 className="text-3xl md:text-4xl font-display font-bold text-secondary-foreground">
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-display font-bold text-secondary-foreground">
                 Warranty Peace of Mind in Partnership with{" "}
                 <span className="text-gold">Autoguard</span>
               </h2>
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
                 Every vehicle we sell comes with the option of comprehensive warranty coverage through our trusted partner, Autoguard. Drive away with confidence knowing you're protected against unexpected mechanical and electrical failures.
               </p>
-              <ul className="space-y-3">
+              <ul className="space-y-2 md:space-y-3">
                 {[
                   "Mechanical & electrical cover included",
                   "Nationwide repair network",
                   "Optional extended warranty available",
                   "24/7 breakdown assistance",
                 ].map((item) => (
-                  <li key={item} className="flex items-center gap-3 text-secondary-foreground">
-                    <CheckCircle className="w-5 h-5 text-gold flex-shrink-0" />
+                  <li key={item} className="flex items-center gap-2 md:gap-3 text-secondary-foreground text-sm md:text-base">
+                    <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-gold flex-shrink-0" />
                     <span>{item}</span>
                   </li>
                 ))}
@@ -162,12 +162,12 @@ const Home = () => {
               </Button>
             </div>
             <div className="relative">
-              <div className="bg-charcoal-light rounded-2xl p-8 md:p-12">
-                <Shield className="w-20 h-20 text-gold mb-6" />
-                <h3 className="text-2xl font-display font-bold text-secondary-foreground mb-4">
+              <div className="bg-charcoal-light rounded-2xl p-6 md:p-8 lg:p-12">
+                <Shield className="w-14 h-14 md:w-20 md:h-20 text-gold mb-4 md:mb-6" />
+                <h3 className="text-xl md:text-2xl font-display font-bold text-secondary-foreground mb-3 md:mb-4">
                   Protected Motoring
                 </h3>
-                <p className="text-muted-foreground">
+                <p className="text-muted-foreground text-sm md:text-base">
                   Our warranty packages are designed to give you complete peace of mind. Whether you're commuting daily or exploring the country, you're covered.
                 </p>
               </div>
@@ -177,32 +177,32 @@ const Home = () => {
       </section>
 
       {/* Trust Section */}
-      <section className="py-20 bg-background">
+      <section className="py-12 md:py-20 bg-background">
         <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <div className="order-2 lg:order-1">
-              <div className="bg-cream-dark rounded-2xl p-8 md:p-12 shadow-card">
-                <div className="grid grid-cols-2 gap-6">
-                  {trustPoints.map((point, index) => (
-                    <div key={point} className="flex items-start gap-3">
-                      <ThumbsUp className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
-                      <span className="text-foreground text-sm">{point}</span>
+              <div className="bg-cream-dark rounded-2xl p-6 md:p-8 lg:p-12 shadow-card">
+                <div className="grid grid-cols-2 gap-4 md:gap-6">
+                  {trustPoints.map((point) => (
+                    <div key={point} className="flex items-start gap-2 md:gap-3">
+                      <ThumbsUp className="w-4 h-4 md:w-5 md:h-5 text-gold flex-shrink-0 mt-0.5" />
+                      <span className="text-foreground text-xs md:text-sm">{point}</span>
                     </div>
                   ))}
                 </div>
               </div>
             </div>
-            <div className="order-1 lg:order-2 space-y-6">
+            <div className="order-1 lg:order-2 space-y-4 md:space-y-6">
               <span className="text-gold text-sm font-medium tracking-widest uppercase">
                 Customer Reassurance
               </span>
-              <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground">
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-display font-bold text-foreground">
                 Trust, Transparency & No Pressure Sales
               </h2>
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
                 At WM & Sons Motors Ltd, we believe in doing business the right way. We're a family-run dealership that values honesty and transparency above all else. When you visit us, you'll experience a refreshingly different approach to car buying.
               </p>
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
                 No pushy sales tactics, no hidden fees, just straightforward advice and a genuine commitment to finding you the right vehicle at the right price.
               </p>
               <Button variant="gold-outline" size="lg" asChild>
@@ -217,24 +217,24 @@ const Home = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-hero">
+      <section className="py-12 md:py-20 bg-gradient-hero">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-display font-bold text-secondary-foreground mb-6">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-display font-bold text-secondary-foreground mb-4 md:mb-6">
             Ready to Find Your Perfect Car?
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
+          <p className="text-muted-foreground max-w-2xl mx-auto mb-6 md:mb-8 text-sm md:text-base">
             Browse our carefully selected stock or get in touch to discuss your requirements. We're here to help you find quality used cars you can trust.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="hero" size="xl" asChild>
+            <Button variant="hero" size="lg" asChild>
               <Link to="/stock">
                 View Our Stock
-                <ArrowRight className="w-5 h-5 ml-2" />
+                <ArrowRight className="w-4 h-4 md:w-5 md:h-5 ml-2" />
               </Link>
             </Button>
-            <Button variant="hero-outline" size="xl" asChild>
+            <Button variant="hero-outline" size="lg" asChild>
               <a href="tel:07960130449">
-                <Phone className="w-5 h-5 mr-2" />
+                <Phone className="w-4 h-4 md:w-5 md:h-5 mr-2" />
                 Call Now
               </a>
             </Button>
