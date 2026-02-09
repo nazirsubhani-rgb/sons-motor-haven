@@ -66,8 +66,12 @@ const Home = () => {
               </h1>
             </div>
             <p className="text-base md:text-lg lg:text-xl text-muted-foreground max-w-xl opacity-0 animate-fade-in stagger-3">
-              Peace of mind motoring with warranty included. Family-run dealership offering carefully selected vehicles at competitive prices.
+              Peace of mind motoring with warranty included in partnership with Autoguard. Family-run dealership offering carefully selected vehicles at competitive prices.
             </p>
+            <div className="flex items-center gap-3 opacity-0 animate-fade-in stagger-3">
+              <img src={autoguardBenefits} alt="Autoguard Warranties Partner" className="h-12 md:h-16 w-auto rounded-md" />
+              <span className="text-muted-foreground text-xs md:text-sm">Official Autoguard Warranty Partner</span>
+            </div>
             <div className="flex flex-col sm:flex-row gap-4 opacity-0 animate-fade-in stagger-4">
               <Button variant="hero" size="lg" asChild>
                 <Link to="/stock">
