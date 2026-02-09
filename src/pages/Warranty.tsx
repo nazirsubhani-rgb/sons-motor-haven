@@ -8,6 +8,11 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import autoguard3Months from "@/assets/autoguard-3-months.jpg";
+import autoguard6Months from "@/assets/autoguard-6-months.jpg";
+import autoguardApp from "@/assets/autoguard-app.jpg";
+import autoguardBenefits from "@/assets/autoguard-benefits.jpg";
+import autoguardCovered from "@/assets/autoguard-covered.jpg";
 
 const Warranty = () => {
   const phoneNumber = "447960130449";
@@ -145,31 +150,36 @@ const Warranty = () => {
         </div>
       </section>
 
-      {/* Partnership Section */}
+      {/* Autoguard Images Section */}
       <section className="py-16 md:py-20 bg-background">
         <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto">
-            <div className="bg-secondary rounded-2xl p-6 md:p-8 lg:p-12 shadow-xl">
-              <div className="flex flex-col md:flex-row items-center gap-6 md:gap-8">
-                <div className="w-32 h-24 md:w-48 md:h-32 bg-white rounded-xl flex items-center justify-center flex-shrink-0 p-4">
-                  <div className="text-center">
-                    <Shield className="w-10 h-10 md:w-12 md:h-12 text-gold mx-auto mb-2" />
-                    <span className="text-charcoal font-bold text-base md:text-lg tracking-wide">AUTOGUARD</span>
-                  </div>
-                </div>
-                <div className="text-center md:text-left">
-                  <h2 className="text-xl md:text-2xl lg:text-3xl font-display font-bold text-secondary-foreground mb-4">
-                    Warranty Protection in Partnership with <span className="text-gold">Autoguard</span>
-                  </h2>
-                  <p className="text-muted-foreground leading-relaxed mb-4 text-sm md:text-base">
-                    Autoguard is one of the UK's premier warranty providers, trusted by thousands of motorists and dealers nationwide. Every vehicle we sell benefits from their comprehensive protection packages and dedicated claims support.
-                  </p>
-                  <p className="text-gold font-semibold text-base md:text-lg italic">
-                    Warranty peace of mind in partnership with Autoguard.
-                  </p>
-                </div>
-              </div>
-            </div>
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <span className="text-gold text-sm font-medium tracking-widest uppercase">
+              Our Partner
+            </span>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-display font-bold text-foreground mt-3">
+              Warranty Protection with <span className="text-gold">Autoguard</span>
+            </h2>
+            <p className="text-muted-foreground mt-4 text-sm md:text-base">
+              Autoguard is one of the UK's premier warranty providers, trusted by thousands of motorists and dealers nationwide.
+            </p>
+          </div>
+
+          {/* Coverage Plans */}
+          <div className="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto mb-10">
+            <img src={autoguard3Months} alt="Autoguard 3 Month Warranty Cover" className="w-full rounded-xl shadow-card" />
+            <img src={autoguard6Months} alt="Autoguard 6 Month Warranty Cover" className="w-full rounded-xl shadow-card" />
+          </div>
+
+          {/* Benefits & Coverage */}
+          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto mb-10">
+            <img src={autoguardBenefits} alt="Autoguard Warranty Benefits" className="w-full rounded-xl shadow-card" />
+            <img src={autoguardCovered} alt="What is covered by Autoguard Warranty" className="w-full rounded-xl shadow-card" />
+          </div>
+
+          {/* App */}
+          <div className="max-w-3xl mx-auto">
+            <img src={autoguardApp} alt="Autoguard Warranty App" className="w-full rounded-xl shadow-card" />
           </div>
         </div>
       </section>
