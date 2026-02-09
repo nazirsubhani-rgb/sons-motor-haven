@@ -2,6 +2,9 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Shield, CheckCircle, Users, ThumbsUp, Star, ArrowRight, Phone } from "lucide-react";
 import heroImage from "@/assets/hero-car.jpg";
+import autoguardBenefits from "@/assets/autoguard-benefits.jpg";
+import autoguard3Months from "@/assets/autoguard-3-months.jpg";
+import autoguard6Months from "@/assets/autoguard-6-months.jpg";
 
 const Home = () => {
   const features = [
@@ -161,15 +164,11 @@ const Home = () => {
                 </Link>
               </Button>
             </div>
-            <div className="relative">
-              <div className="bg-charcoal-light rounded-2xl p-6 md:p-8 lg:p-12">
-                <Shield className="w-14 h-14 md:w-20 md:h-20 text-gold mb-4 md:mb-6" />
-                <h3 className="text-xl md:text-2xl font-display font-bold text-secondary-foreground mb-3 md:mb-4">
-                  Protected Motoring
-                </h3>
-                <p className="text-muted-foreground text-sm md:text-base">
-                  Our warranty packages are designed to give you complete peace of mind. Whether you're commuting daily or exploring the country, you're covered.
-                </p>
+            <div className="relative space-y-4">
+              <img src={autoguardBenefits} alt="Autoguard Warranty Benefits" className="w-full rounded-xl shadow-card" />
+              <div className="grid grid-cols-2 gap-4">
+                <img src={autoguard3Months} alt="3 Month Warranty Cover" className="w-full rounded-xl shadow-card" />
+                <img src={autoguard6Months} alt="6 Month Warranty Cover" className="w-full rounded-xl shadow-card" />
               </div>
             </div>
           </div>
