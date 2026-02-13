@@ -60,11 +60,11 @@ const Header = () => {
           {/* Phone CTA */}
           <div className="hidden lg:flex items-center gap-4">
             <a
-              href="tel:07960130449"
+              href="tel:02046368471"
               className="flex items-center gap-2 text-gold hover:text-gold-light transition-colors"
             >
               <Phone className="w-4 h-4" />
-              <span className="font-medium">07960 130449</span>
+              <span className="font-medium">0204 636 8471</span>
             </a>
             <Button variant="gold" size="sm" asChild>
               <Link to="/contact" onClick={(e) => handleNavClick(e, "/contact")}>Get in Touch</Link>
