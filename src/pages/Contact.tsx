@@ -74,8 +74,8 @@ const Contact = () => {
     {
       icon: Mail,
       label: "Email",
-      value: "wmsonsmotorsltd@gmail.com",
-      href: "mailto:wmsonsmotorsltd@gmail.com",
+      value: "sales@wmsonsmotorsltd.com",
+      href: "mailto:sales@wmsonsmotorsltd.com",
     },
     {
       icon: MapPin,

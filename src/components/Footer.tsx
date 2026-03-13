@@ -90,11 +90,11 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="mailto:wmsonsmotorsltd@gmail.com"
+                  href="mailto:sales@wmsonsmotorsltd.com"
                   className="flex items-center gap-3 text-muted-foreground text-sm hover:text-gold transition-colors break-all"
                 >
                   <Mail className="w-4 h-4 text-gold flex-shrink-0" />
-                  <span>wmsonsmotorsltd@gmail.com</span>
+                  <span>sales@wmsonsmotorsltd.com</span>
                 </a>
               </li>
               <li className="flex items-start gap-3 text-muted-foreground text-sm">
