@@ -85,12 +85,19 @@ const Home = () => {
             </div>
             <div className="flex items-center gap-4 pt-2 md:pt-4 opacity-0 animate-fade-in stagger-5">
               <a
-                href="tel:07960130449"
+                href="tel:02046368471"
                 className="flex items-center gap-2 text-gold hover:text-gold-light transition-colors"
               >
                 <Phone className="w-4 h-4 md:w-5 md:h-5" />
-                <span className="font-semibold text-sm md:text-base">07960 130449</span>
+                <span className="font-semibold text-sm md:text-base">0204 636 8471</span>
               </a>
+              <button
+                onClick={handleWhatsAppClick}
+                className="flex items-center gap-2 bg-[#25D366] hover:bg-[#20bd5a] text-white px-4 py-2 rounded-lg transition-colors text-sm md:text-base font-medium"
+              >
+                <MessageCircle className="w-4 h-4 md:w-5 md:h-5" />
+                Chat with us on WhatsApp
+              </button>
             </div>
           </div>
         </div>
