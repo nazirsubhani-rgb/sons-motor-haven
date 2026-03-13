@@ -350,10 +350,18 @@ const Warranty = () => {
                 className="border-secondary text-secondary hover:bg-secondary/10"
                 asChild
               >
-                <a href="tel:07960130449">
+                <a href="tel:02046368471">
                   <Phone className="w-4 h-4 md:w-5 md:h-5 mr-2" />
-                  Call 07960 130449
+                  Call 0204 636 8471
                 </a>
+              </Button>
+              <Button 
+                size="lg"
+                className="bg-[#25D366] hover:bg-[#20bd5a] text-white"
+                onClick={handleWhatsAppClick}
+              >
+                <MessageCircle className="w-4 h-4 md:w-5 md:h-5 mr-2" />
+                Chat with us on WhatsApp
               </Button>
             </div>
           </div>
