@@ -154,7 +154,7 @@ const AdminSettings = () => {
                 type="email"
                 value={settings.email_address}
                 onChange={handleChange}
-                placeholder="wmsonsmotorsltd@gmail.com"
+                placeholder="sales@wmsonsmotorsltd.com"
               />
             </div>
             <div>
