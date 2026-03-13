@@ -1,12 +1,20 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Shield, CheckCircle, Users, ThumbsUp, Star, ArrowRight, Phone } from "lucide-react";
+import { Shield, CheckCircle, Users, ThumbsUp, Star, ArrowRight, Phone, MessageCircle } from "lucide-react";
+import { openWhatsAppChat } from "@/lib/whatsapp";
 import heroImage from "@/assets/hero-car.jpg";
 import autoguardBenefits from "@/assets/autoguard-benefits.jpg";
 import autoguard3Months from "@/assets/autoguard-3-months.jpg";
 import autoguard6Months from "@/assets/autoguard-6-months.jpg";
 
 const Home = () => {
+  const phoneNumber = "447960130449";
+  const whatsappMessage = "Hello! I'm interested in learning more about your vehicles.";
+
+  const handleWhatsAppClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    openWhatsAppChat(phoneNumber, whatsappMessage);
+  };
   const features = [
     {
       icon: CheckCircle,
