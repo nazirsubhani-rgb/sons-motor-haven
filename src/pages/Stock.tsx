@@ -194,7 +194,7 @@ const Stock = () => {
               Our Stock
             </span>
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-secondary-foreground mt-3 mb-4 md:mb-6">
-              Quality Used Cars
+              Our Collection
             </h1>
             <p className="text-muted-foreground text-base md:text-lg">
               Browse our selection of carefully inspected, warranty-backed vehicles. All competitively priced with no hidden fees.
