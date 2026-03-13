@@ -157,6 +157,12 @@ const Footer = () => {
               >
                 Terms & Conditions
               </Link>
+              <Link 
+                to="/admin/login" 
+                className="hover:text-gold transition-colors"
+              >
+                Admin Login
+              </Link>
             </div>
           </div>
         </div>
