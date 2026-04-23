@@ -24,6 +24,7 @@ import {
   Loader2,
 } from "lucide-react";
 import { format } from "date-fns";
+import { enquirySchema } from "@/lib/enquiry-validation";
 
 interface Vehicle {
   id: string;
@@ -99,14 +100,26 @@ const VehicleDetail = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    const result = enquirySchema.safeParse(formData);
+    if (!result.success) {
+      const firstError = result.error.errors[0];
+      toast({
+        title: "Invalid input",
+        description: firstError.message,
+        variant: "destructive",
+      });
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
       const { error } = await supabase.from("enquiries").insert({
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone || null,
-        message: formData.message,
+        name: result.data.name,
+        email: result.data.email,
+        phone: result.data.phone || null,
+        message: result.data.message,
         vehicle_id: id,
       });
 
