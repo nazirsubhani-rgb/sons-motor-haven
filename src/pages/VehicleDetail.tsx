@@ -196,13 +196,13 @@ const VehicleDetail = () => {
   ].filter(Boolean);
 
   return (
-    <main className="min-h-screen bg-background">
+    <main className="min-h-screen bg-background overflow-x-hidden">
       {/* Breadcrumb */}
       <div className="bg-cream-dark py-4">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto">
           <Link
             to="/stock"
-            className="inline-flex items-center text-muted-foreground hover:text-foreground"
+            className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back to Stock
@@ -210,8 +210,8 @@ const VehicleDetail = () => {
         </div>
       </div>
 
-      <div className="container mx-auto px-4 py-8">
-        <div className="grid lg:grid-cols-2 gap-8">
+      <div className="container mx-auto py-6 md:py-8">
+        <div className="grid lg:grid-cols-2 gap-6 lg:gap-8">
           {/* Image Gallery */}
           <div>
             <div className="relative aspect-video rounded-xl overflow-hidden bg-muted">
@@ -288,27 +288,27 @@ const VehicleDetail = () => {
           </div>
 
           {/* Vehicle Info */}
-          <div>
-            <h1 className="text-3xl md:text-4xl font-display font-bold text-foreground">
+          <div className="min-w-0">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-foreground break-words">
               {vehicle.year} {vehicle.make} {vehicle.model}
             </h1>
             {vehicle.trim && (
-              <p className="text-lg text-muted-foreground mt-1">{vehicle.trim}</p>
+              <p className="text-base md:text-lg text-muted-foreground mt-1 break-words">{vehicle.trim}</p>
             )}
 
             <div className="mt-4">
-              <span className="text-4xl font-bold text-gold">
+              <span className="text-3xl sm:text-4xl font-bold text-gold">
                 £{vehicle.price.toLocaleString()}
               </span>
             </div>
 
             {/* Quick Specs */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 md:gap-4 mt-6 md:mt-8">
               {specs.map((spec, index) => spec && (
-                <div key={index} className="text-center p-4 bg-cream-dark rounded-lg">
+                <div key={index} className="text-center p-3 md:p-4 bg-cream-dark rounded-lg min-w-0">
                   <spec.icon className="w-5 h-5 text-gold mx-auto mb-2" />
                   <p className="text-xs text-muted-foreground">{spec.label}</p>
-                  <p className="font-semibold text-foreground capitalize">{spec.value}</p>
+                  <p className="font-semibold text-sm md:text-base text-foreground capitalize break-words">{spec.value}</p>
                 </div>
               ))}
             </div>
@@ -359,18 +359,18 @@ const VehicleDetail = () => {
             </div>
 
             {/* CTA */}
-            <div className="mt-8 p-6 bg-secondary rounded-xl">
-              <h3 className="text-lg font-semibold text-secondary-foreground mb-4">
+            <div className="mt-8 p-4 sm:p-6 bg-secondary rounded-xl">
+              <h3 className="text-base md:text-lg font-semibold text-secondary-foreground mb-4">
                 Interested in this vehicle?
               </h3>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button variant="hero" size="lg" className="flex-1" asChild>
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                <Button variant="hero" size="lg" className="flex-1 w-full text-sm sm:text-base" asChild>
                   <a href="tel:07960130449">
-                    <Phone className="w-4 h-4 mr-2" />
-                    Call 07960 130449
+                    <Phone className="w-4 h-4 mr-2 flex-shrink-0" />
+                    <span className="truncate">Call 07960 130449</span>
                   </a>
                 </Button>
-                <Button variant="hero-outline" size="lg" className="flex-1" asChild>
+                <Button variant="hero-outline" size="lg" className="flex-1 w-full text-sm sm:text-base" asChild>
                   <a href="#enquiry-form">Send Enquiry</a>
                 </Button>
               </div>
@@ -380,12 +380,12 @@ const VehicleDetail = () => {
 
         {/* Description */}
         {vehicle.description && (
-          <div className="mt-12">
-            <h2 className="text-2xl font-display font-bold text-foreground mb-4">
+          <div className="mt-10 md:mt-12">
+            <h2 className="text-xl md:text-2xl font-display font-bold text-foreground mb-4">
               Description
             </h2>
             <div className="prose prose-gray max-w-none">
-              <p className="text-muted-foreground whitespace-pre-wrap">
+              <p className="text-sm md:text-base text-muted-foreground whitespace-pre-wrap break-words">
                 {vehicle.description}
               </p>
             </div>
@@ -394,16 +394,16 @@ const VehicleDetail = () => {
 
         {/* Warranty Section */}
         {vehicle.warranty_included && (
-          <div className="mt-12 p-8 bg-gradient-hero rounded-2xl">
-            <div className="flex items-start gap-6">
-              <div className="w-16 h-16 bg-gold/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                <Shield className="w-8 h-8 text-gold" />
+          <div className="mt-10 md:mt-12 p-5 sm:p-8 bg-gradient-hero rounded-2xl">
+            <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6">
+              <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gold/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                <Shield className="w-7 h-7 sm:w-8 sm:h-8 text-gold" />
               </div>
-              <div>
-                <h2 className="text-2xl font-display font-bold text-secondary-foreground mb-2">
+              <div className="min-w-0">
+                <h2 className="text-xl md:text-2xl font-display font-bold text-secondary-foreground mb-2">
                   Warranty Included
                 </h2>
-                <p className="text-muted-foreground mb-4">
+                <p className="text-sm md:text-base text-muted-foreground mb-4">
                   This vehicle comes with comprehensive warranty coverage in partnership with Autoguard. Drive away with complete peace of mind knowing you're protected against unexpected mechanical and electrical failures.
                 </p>
                 <Button variant="gold" asChild>
@@ -415,8 +415,8 @@ const VehicleDetail = () => {
         )}
 
         {/* Enquiry Form */}
-        <div id="enquiry-form" className="mt-12 scroll-mt-8">
-          <div className="max-w-2xl mx-auto bg-card rounded-2xl p-8 shadow-card">
+        <div id="enquiry-form" className="mt-10 md:mt-12 scroll-mt-8">
+          <div className="max-w-2xl mx-auto bg-card rounded-2xl p-5 sm:p-8 shadow-card">
             <h2 className="text-2xl font-display font-bold text-foreground mb-2">
               Enquire About This Vehicle
             </h2>
