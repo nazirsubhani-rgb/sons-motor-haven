@@ -213,26 +213,28 @@ const VehicleDetail = () => {
       <div className="container mx-auto py-6 md:py-8">
         <div className="grid lg:grid-cols-2 gap-6 lg:gap-8">
           {/* Image Gallery */}
-          <div>
-            <div className="relative aspect-video rounded-xl overflow-hidden bg-muted">
+          <div className="min-w-0">
+            <div className="relative h-[260px] sm:h-[360px] lg:h-auto lg:aspect-video rounded-xl overflow-hidden bg-muted">
               {vehicle.vehicle_images && vehicle.vehicle_images.length > 0 ? (
                 <>
                   <img
                     src={vehicle.vehicle_images[currentImageIndex].image_url}
                     alt={`${vehicle.year} ${vehicle.make} ${vehicle.model}`}
-                    className="w-full h-full object-cover"
+                    className="absolute inset-0 w-full h-full object-cover object-center"
                   />
                   {vehicle.vehicle_images.length > 1 && (
                     <>
                       <button
                         onClick={prevImage}
-                        className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/50 hover:bg-black/70 rounded-full flex items-center justify-center text-white transition-colors"
+                        className="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-secondary/60 hover:bg-secondary/80 rounded-full flex items-center justify-center text-secondary-foreground transition-colors"
+                        aria-label="Previous image"
                       >
                         <ChevronLeft className="w-6 h-6" />
                       </button>
                       <button
                         onClick={nextImage}
-                        className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/50 hover:bg-black/70 rounded-full flex items-center justify-center text-white transition-colors"
+                        className="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-secondary/60 hover:bg-secondary/80 rounded-full flex items-center justify-center text-secondary-foreground transition-colors"
+                        aria-label="Next image"
                       >
                         <ChevronRight className="w-6 h-6" />
                       </button>
@@ -240,18 +242,18 @@ const VehicleDetail = () => {
                   )}
                   {/* Status Badge */}
                   {vehicle.status === "reserved" && (
-                    <Badge className="absolute top-4 right-4 bg-gold text-secondary text-sm">
+                    <Badge className="absolute top-3 right-3 sm:top-4 sm:right-4 bg-gold text-secondary text-xs sm:text-sm">
                       Reserved
                     </Badge>
                   )}
                   {vehicle.status === "sold" && (
-                    <Badge className="absolute top-4 right-4 bg-muted text-muted-foreground text-sm">
+                    <Badge className="absolute top-3 right-3 sm:top-4 sm:right-4 bg-muted text-muted-foreground text-xs sm:text-sm">
                       Sold
                     </Badge>
                   )}
                   {vehicle.warranty_included && (
-                    <Badge className="absolute top-4 left-4 bg-gold text-secondary text-sm">
-                      <Shield className="w-3 h-3 mr-1" />
+                    <Badge className="absolute top-3 left-3 sm:top-4 sm:left-4 bg-gold text-secondary text-xs sm:text-sm max-w-[calc(100%-1.5rem)]">
+                      <Shield className="w-3 h-3 mr-1 flex-shrink-0" />
                       Warranty Included
                     </Badge>
                   )}
