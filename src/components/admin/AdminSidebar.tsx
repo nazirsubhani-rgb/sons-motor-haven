@@ -8,6 +8,7 @@ import {
   Settings,
   LogOut,
   Home,
+  Smile,
 } from "lucide-react";
 
 const AdminSidebar = () => {
@@ -18,6 +19,7 @@ const AdminSidebar = () => {
     { icon: LayoutDashboard, label: "Dashboard", href: "/admin" },
     { icon: Car, label: "Vehicles", href: "/admin/vehicles" },
     { icon: MessageSquare, label: "Enquiries", href: "/admin/enquiries" },
+    { icon: Smile, label: "Happy Customers", href: "/admin/happy-customers" },
     { icon: Settings, label: "Settings", href: "/admin/settings" },
   ];
 

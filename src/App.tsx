@@ -27,6 +27,7 @@ import AdminVehicles from "./pages/admin/AdminVehicles";
 import VehicleForm from "./pages/admin/VehicleForm";
 import AdminEnquiries from "./pages/admin/AdminEnquiries";
 import AdminSettings from "./pages/admin/AdminSettings";
+import AdminHappyCustomers from "./pages/admin/AdminHappyCustomers";
 
 const queryClient = new QueryClient();
 
@@ -137,6 +138,7 @@ const App = () => (
               <Route path="vehicles/:id" element={<VehicleForm />} />
               <Route path="enquiries" element={<AdminEnquiries />} />
               <Route path="settings" element={<AdminSettings />} />
+              <Route path="happy-customers" element={<AdminHappyCustomers />} />
             </Route>
 
             {/* 404 */}
