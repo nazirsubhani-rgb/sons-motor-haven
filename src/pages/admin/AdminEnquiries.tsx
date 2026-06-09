@@ -359,9 +359,11 @@ const AdminEnquiries = () => {
 
               <div>
                 <p className="text-sm text-muted-foreground mb-2">Message</p>
-                <p className="text-foreground whitespace-pre-wrap">
-                  {selectedEnquiry.message}
-                </p>
+                <div className="max-h-[40vh] overflow-y-auto rounded-lg border border-border bg-muted/40 p-4">
+                  <p className="text-foreground text-sm whitespace-pre-wrap break-words [overflow-wrap:anywhere] leading-relaxed">
+                    {selectedEnquiry.message}
+                  </p>
+                </div>
               </div>
 
               <div className="flex gap-2 pt-4">
