@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Shield, CheckCircle, Users, ThumbsUp, Star, ArrowRight, Phone, MessageCircle } from "lucide-react";
 import { openWhatsAppChat } from "@/lib/whatsapp";
+import { supabase } from "@/integrations/supabase/client";
 import heroImage from "@/assets/hero-car.jpg";
 import autoguardBenefits from "@/assets/autoguard-benefits.jpg";
 import autoguard3Months from "@/assets/autoguard-3-months.jpg";
@@ -9,7 +11,40 @@ import autoguard6Months from "@/assets/autoguard-6-months.jpg";
 import happyCustomer1 from "@/assets/happy-customer-1.jpeg";
 import happyCustomer2 from "@/assets/happy-customer-2.jpeg";
 
+interface HappyCustomerItem {
+  src: string;
+  alt: string;
+  caption: string;
+}
+
+const fallbackHappyCustomers: HappyCustomerItem[] = [
+  { src: happyCustomer1, alt: "Happy customers collecting their Nissan Qashqai from WM & Sons Motors", caption: "Nissan Qashqai handover" },
+  { src: happyCustomer2, alt: "Happy customer collecting his Ford Mondeo from WM & Sons Motors", caption: "Ford Mondeo handover" },
+];
+
 const Home = () => {
+  const [happyCustomers, setHappyCustomers] = useState<HappyCustomerItem[]>(fallbackHappyCustomers);
+
+  useEffect(() => {
+    supabase
+      .from("happy_customers")
+      .select("image_url, caption, customer_name")
+      .eq("is_active", true)
+      .order("display_order", { ascending: true })
+      .order("created_at", { ascending: false })
+      .then(({ data }) => {
+        if (data && data.length > 0) {
+          setHappyCustomers(
+            data.map((row) => ({
+              src: row.image_url,
+              alt: row.caption || row.customer_name || "Happy WM & Sons Motors customer",
+              caption: row.caption || row.customer_name || "Happy customer handover",
+            }))
+          );
+        }
+      });
+  }, []);
+
   const phoneNumber = "447960130449";
   const whatsappMessage = "Hello! I'm interested in learning more about your vehicles.";
 
@@ -252,10 +287,7 @@ const Home = () => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto">
-            {[
-              { src: happyCustomer1, alt: "Happy customers collecting their Nissan Qashqai from WM & Sons Motors", caption: "Nissan Qashqai handover" },
-              { src: happyCustomer2, alt: "Happy customer collecting his Ford Mondeo from WM & Sons Motors", caption: "Ford Mondeo handover" },
-            ].map((item) => (
+            {happyCustomers.map((item) => (
               <div
                 key={item.caption}
                 className="group relative overflow-hidden rounded-xl shadow-card hover:shadow-elevated transition-all duration-300"
