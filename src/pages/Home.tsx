@@ -6,6 +6,8 @@ import heroImage from "@/assets/hero-car.jpg";
 import autoguardBenefits from "@/assets/autoguard-benefits.jpg";
 import autoguard3Months from "@/assets/autoguard-3-months.jpg";
 import autoguard6Months from "@/assets/autoguard-6-months.jpg";
+import happyCustomer1 from "@/assets/happy-customer-1.jpeg";
+import happyCustomer2 from "@/assets/happy-customer-2.jpeg";
 
 const Home = () => {
   const phoneNumber = "447960130449";
@@ -228,6 +230,56 @@ const Home = () => {
                   About Our Family Business
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Happy Customers Section */}
+      <section className="py-12 md:py-20 bg-secondary">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-3xl mx-auto mb-10 md:mb-14">
+            <span className="text-gold text-sm font-medium tracking-widest uppercase">
+              Happy Customers
+            </span>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-display font-bold text-secondary-foreground mt-3">
+              Driving Away With a Smile
+            </h2>
+            <p className="text-muted-foreground mt-4 text-sm md:text-base">
+              Real customers, real handovers. We're proud to be part of every journey that starts with WM & Sons Motors.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto">
+            {[
+              { src: happyCustomer1, alt: "Happy customers collecting their Nissan Qashqai from WM & Sons Motors", caption: "Nissan Qashqai handover" },
+              { src: happyCustomer2, alt: "Happy customer collecting his Ford Mondeo from WM & Sons Motors", caption: "Ford Mondeo handover" },
+            ].map((item) => (
+              <div
+                key={item.caption}
+                className="group relative overflow-hidden rounded-xl shadow-card hover:shadow-elevated transition-all duration-300"
+              >
+                <div className="aspect-[4/5] overflow-hidden bg-muted">
+                  <img
+                    src={item.src}
+                    alt={item.alt}
+                    loading="lazy"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-4 md:p-5">
+                  <p className="text-white font-display text-sm md:text-base">{item.caption}</p>
+                  <p className="text-gold text-xs md:text-sm">Another satisfied WM & Sons customer</p>
+                </div>
+              </div>
+            ))}
+            <div className="hidden lg:flex flex-col justify-center items-center text-center bg-charcoal-light/40 rounded-xl p-8 border border-gold/20">
+              <Star className="w-10 h-10 text-gold mb-3" />
+              <h3 className="text-secondary-foreground font-display text-lg mb-2">Could be you next</h3>
+              <p className="text-muted-foreground text-sm mb-4">Browse our latest collection and join our growing family of happy drivers.</p>
+              <Button variant="gold" size="sm" asChild>
+                <Link to="/stock">View Our Collection<ArrowRight className="w-4 h-4 ml-2" /></Link>
               </Button>
             </div>
           </div>
