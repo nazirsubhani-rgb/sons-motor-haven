@@ -10,6 +10,8 @@ import autoguard3Months from "@/assets/autoguard-3-months.jpg";
 import autoguard6Months from "@/assets/autoguard-6-months.jpg";
 import happyCustomer1 from "@/assets/happy-customer-1.jpeg";
 import happyCustomer2 from "@/assets/happy-customer-2.jpeg";
+import happyCustomer3 from "@/assets/happy-customer-3.jpeg";
+import happyCustomer4 from "@/assets/happy-customer-4.jpeg";
 
 interface HappyCustomerItem {
   src: string;
@@ -19,7 +21,9 @@ interface HappyCustomerItem {
 
 const fallbackHappyCustomers: HappyCustomerItem[] = [
   { src: happyCustomer1, alt: "Happy customers collecting their Nissan Qashqai from WM & Sons Motors", caption: "Nissan Qashqai handover" },
-  { src: happyCustomer2, alt: "Happy customer collecting his Ford Mondeo from WM & Sons Motors", caption: "Ford Mondeo handover" },
+  { src: happyCustomer2, alt: "Happy customer collecting his Ford Focus from WM & Sons Motors", caption: "Ford Focus handover" },
+  { src: happyCustomer3, alt: "Happy customer collecting her Mini Cooper from WM & Sons Motors", caption: "Mini Cooper handover" },
+  { src: happyCustomer4, alt: "Happy customer collecting his Mercedes-Benz CLA from WM & Sons Motors", caption: "Mercedes-Benz CLA handover" },
 ];
 
 const Home = () => {
