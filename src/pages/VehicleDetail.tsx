@@ -367,9 +367,9 @@ const VehicleDetail = () => {
               </h3>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                 <Button variant="hero" size="lg" className="flex-1 w-full text-sm sm:text-base" asChild>
-                  <a href="tel:07960130449">
+                  <a href="tel:02046468471">
                     <Phone className="w-4 h-4 mr-2 flex-shrink-0" />
-                    <span className="truncate">Call 07960 130449</span>
+                    <span className="truncate">Call 02046468471</span>
                   </a>
                 </Button>
                 <Button variant="hero-outline" size="lg" className="flex-1 w-full text-sm sm:text-base" asChild>

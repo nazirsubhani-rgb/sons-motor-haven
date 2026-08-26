@@ -6,7 +6,7 @@ import { openWhatsAppChat } from "@/lib/whatsapp";
 
 const Footer = () => {
   const location = useLocation();
-  const phoneNumber = "447960130449";
+  const phoneNumber = "442046468471";
   const whatsappMessage = "Hello! I'm interested in learning more about your vehicles.";
   
   const handleWhatsAppClick = (e: React.MouseEvent) => {
@@ -81,11 +81,11 @@ const Footer = () => {
             <ul className="space-y-3">
               <li>
                 <a
-                  href="tel:02046368471"
+                  href="tel:02046468471"
                   className="flex items-center gap-3 text-muted-foreground text-sm hover:text-gold transition-colors"
                 >
                   <Phone className="w-4 h-4 text-gold" />
-                  0204 636 8471
+                  02046468471
                 </a>
               </li>
               <li>

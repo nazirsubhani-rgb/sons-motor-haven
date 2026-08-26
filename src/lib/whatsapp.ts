@@ -1,6 +1,6 @@
 export function buildWhatsAppUrl(phoneInternational: string, message: string) {
   // WhatsApp requires international format WITHOUT "+" or leading zeros.
-  // Example for UK number 07960 130449 => 447960130449
+  // Example for UK number 02046468471 => 442046468471
   return `https://wa.me/${phoneInternational}?text=${encodeURIComponent(message)}`;
 }
 

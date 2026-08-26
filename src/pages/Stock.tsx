@@ -415,7 +415,7 @@ const Stock = () => {
               )}
               <div className="mt-4">
                 <Button variant="gold" asChild>
-                  <a href="tel:07960130449">Call Us: 07960 130449</a>
+                  <a href="tel:02046468471">Call Us: 02046468471</a>
                 </Button>
               </div>
             </div>
@@ -493,7 +493,7 @@ const Stock = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button variant="gold" size="lg" asChild>
-                <a href="tel:07960130449">Call Us: 07960 130449</a>
+                <a href="tel:02046468471">Call Us: 02046468471</a>
               </Button>
               <Button variant="gold-outline" size="lg" asChild>
                 <Link to="/contact">Send Enquiry</Link>
