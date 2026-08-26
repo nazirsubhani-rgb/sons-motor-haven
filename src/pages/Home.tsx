@@ -49,7 +49,7 @@ const Home = () => {
       });
   }, []);
 
-  const phoneNumber = "447960130449";
+  const phoneNumber = "442046468471";
   const whatsappMessage = "Hello! I'm interested in learning more about your vehicles.";
 
   const handleWhatsAppClick = (e: React.MouseEvent) => {
@@ -134,11 +134,11 @@ const Home = () => {
             </div>
             <div className="flex items-center gap-4 pt-2 md:pt-4 opacity-0 animate-fade-in stagger-5">
               <a
-                href="tel:02046368471"
+                href="tel:02046468471"
                 className="flex items-center gap-2 text-gold hover:text-gold-light transition-colors"
               >
                 <Phone className="w-4 h-4 md:w-5 md:h-5" />
-                <span className="font-semibold text-sm md:text-base">0204 636 8471</span>
+                <span className="font-semibold text-sm md:text-base">02046468471</span>
               </a>
               <button
                 onClick={handleWhatsAppClick}
@@ -339,7 +339,7 @@ const Home = () => {
               </Link>
             </Button>
             <Button variant="hero-outline" size="lg" asChild>
-              <a href="tel:07960130449">
+              <a href="tel:02046468471">
                 <Phone className="w-4 h-4 md:w-5 md:h-5 mr-2" />
                 Call Now
               </a>

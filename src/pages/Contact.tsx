@@ -18,7 +18,7 @@ const Contact = () => {
     message: "",
   });
 
-  const phoneNumber = "447960130449";
+  const phoneNumber = "442046468471";
   const whatsappMessage = "Hello! I'm interested in learning more about your vehicles.";
 
   const handleWhatsAppClick = (e: React.MouseEvent) => {
@@ -81,8 +81,8 @@ const Contact = () => {
     {
       icon: Phone,
       label: "Phone",
-      value: "0204 636 8471",
-      href: "tel:02046368471",
+      value: "02046468471",
+      href: "tel:02046468471",
     },
     {
       icon: Mail,
@@ -327,9 +327,9 @@ const Contact = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button variant="hero" size="lg" asChild className="text-sm md:text-base">
-              <a href="tel:02046368471">
+              <a href="tel:02046468471">
                 <Phone className="w-4 h-4 md:w-5 md:h-5 mr-2" />
-                0204 636 8471
+                02046468471
               </a>
             </Button>
             <Button 

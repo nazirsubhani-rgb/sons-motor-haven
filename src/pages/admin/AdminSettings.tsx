@@ -143,7 +143,7 @@ const AdminSettings = () => {
                 name="phone_number"
                 value={settings.phone_number}
                 onChange={handleChange}
-                placeholder="07960 130449"
+                placeholder="02046468471"
               />
             </div>
             <div>

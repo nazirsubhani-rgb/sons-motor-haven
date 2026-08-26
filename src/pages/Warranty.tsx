@@ -15,7 +15,7 @@ import autoguardBenefits from "@/assets/autoguard-benefits.jpg";
 import autoguardCovered from "@/assets/autoguard-covered.jpg";
 
 const Warranty = () => {
-  const phoneNumber = "447960130449";
+  const phoneNumber = "442046468471";
   const whatsappMessage = "Hello! I'd like to ask about your warranty options.";
 
   const handleWhatsAppClick = (e: React.MouseEvent) => {
@@ -350,9 +350,9 @@ const Warranty = () => {
                 className="border-secondary text-secondary hover:bg-secondary/10"
                 asChild
               >
-                <a href="tel:02046368471">
+                <a href="tel:02046468471">
                   <Phone className="w-4 h-4 md:w-5 md:h-5 mr-2" />
-                  Call 0204 636 8471
+                  Call 02046468471
                 </a>
               </Button>
               <Button 
