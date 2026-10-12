@@ -1,73 +1,214 @@
-# Welcome to your Lovable project
+# WM and Sons Motors
 
-## Project info
+Create a modern, premium used-car dealership website for a UK company called WM & Sons Motors Ltd.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
 
-## How can I edit this code?
 
-There are several ways of editing your application.
 
-**Use Lovable**
+Brand & Style
+	•	Colour scheme: Black, gold, and white
+	•	Style: Luxury, trustworthy, clean, professional
+	•	Target audience: UK car buyers looking for reliable used cars with warranty
+	•	Tone: Reassuring, honest, family-run business feel
+	•	Font style: Modern sans-serif with premium headings
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
 
-Changes made via Lovable will be committed automatically to this repo.
 
-**Use your preferred IDE**
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+Logo
+	•	Use the uploaded logo (gold car silhouette with “WM & Sons Motors Ltd”)
+	•	Place logo top left
+	•	Black background header
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
-Follow these steps:
+
+
+⸻
+
+
+
+
+🔹 WEBSITE STRUCTURE (VERY IMPORTANT)
+
+
+
+
+1️⃣ Home Page
+
+
+
+
+Include:
+	•	Large hero banner with headline:
+“Quality Used Cars You Can Trust”
+	•	Sub-heading:
+“Peace of mind motoring with warranty included”
+	•	Call-to-action buttons:
+	•	“View Stock”
+	•	“Contact Us”
+
+
+
+
+Sections:
+	•	Why Choose WM & Sons Motors Ltd
+	•	Quality checked vehicles
+	•	Competitive pricing
+	•	Warranty peace of mind
+	•	Friendly customer service
+	•	Warranty section:
+“Warranty peace of mind in partnership with Autoguard”
+	•	Customer reassurance section (trust, transparency, no pressure sales)
+
+
+
+
+⸻
+
+
+
+
+2️⃣ Stock / Used Cars Page
+	•	Embed or link to external stock pages:
+	•	https://www.gssgarage.co.uk/used-cars
+	•	https://www.mrcarmax.co.uk
+	•	https://www.goldenmotorsltd.co.uk
+	•	Clean vehicle cards layout
+	•	Finance & warranty badges on listings
+
+
+
+
+⸻
+
+
+
+
+3️⃣ About Us Page
+
+
+
+
+Content to generate:
+
+
+
+
+WM & Sons Motors Ltd is a trusted UK used car dealer committed to supplying quality vehicles at competitive prices. We pride ourselves on honest advice, carefully selected stock, and providing customers with peace of mind through comprehensive warranties. Our goal is simple: make buying a car straightforward, transparent, and stress-free.
+
+
+
+
+⸻
+
+
+
+
+4️⃣ Warranty Page
+
+
+
+
+Highlight:
+	•	Partnership with Autoguard
+	•	Benefits:
+	•	Mechanical & electrical cover
+	•	Nationwide repair network
+	•	Optional extended warranty
+	•	Clear reassurance language
+
+
+
+
+⸻
+
+
+
+
+5️⃣ Contact Us Page
+
+
+
+
+Display clearly:
+	•	📞 07960 130449
+	•	📧 wmsonsmotorsltd@gmail.com
+	•	Contact form with:
+	•	Name
+	•	Email
+	•	Phone
+	•	Message
+	•	Google Maps placeholder (location can be added later)
+
+
+
+
+⸻
+
+
+
+
+6️⃣ Footer
+
+
+
+
+Include:
+	•	WM & Sons Motors Ltd
+	•	Phone & email
+	•	“Warranty provided in partnership with Autoguard”
+	•	Social media icons (placeholders)
+	•	Legal links placeholders (Privacy Policy, Terms)
+
+
+
+
+⸻
+
+
+
+
+🔹 TECHNICAL REQUIREMENTS
+	•	Fully mobile responsive
+	•	Fast loading
+	•	SEO-friendly
+	•	UK spelling
+	•	Simple CMS-ready structure
+	•	Optimised for car dealership conversions
+
+
+
+
+⸻
+
+
+
+
+🔹 OPTIONAL ADD-ONS (YOU CAN TICK THESE IN LOVABLE)
+	•	WhatsApp chat button
+	•	Finance enquiry form
+	•	Vehicle enquiry modal
+	•	Test drive booking form
+
+This project was built with [Lovable](https://lovable.dev).
+
+**Live app**: https://sons-motor-haven.lovable.app
+
+## Build with Lovable
+
+Continue developing this project in the [Lovable editor](https://lovable.dev/projects/8155adb9-1e30-4289-8fc8-2b7d79e3b7a0).
+
+- **Ship faster**: describe what you want to build and Lovable handles the code.
+- **Stay in sync**: every change made in Lovable is committed straight to this repository.
+- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+
+## Development
+
+Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
+git clone <this-repository-url>
+cd <repository-name>
 npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
 npm run dev
 ```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
